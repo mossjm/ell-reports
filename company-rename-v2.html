@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Rename Research — Round 2: Non-Literal Names</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap');
+
+@page {
+    size: letter;
+    margin: 2.5cm 2.5cm 3cm 2.5cm;
+    @bottom-center {
+        content: counter(page);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 9pt;
+        color: #6b7280;
+    }
+    @bottom-right {
+        content: "Elm Lake Labs";
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 8pt;
+        color: #9ca3af;
+    }
+}
+
+@page :first {
+    margin: 0;
+    @bottom-center { content: none; }
+    @bottom-right { content: none; }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+    font-size: 10.5pt;
+    line-height: 1.7;
+    color: #1f2937;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Cover Page */
+.cover-page {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 3cm;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+    color: white;
+    text-align: center;
+}
+
+.cover-logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 14pt;
+    font-weight: 300;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 3cm;
+}
+
+.cover-title {
+    font-family: 'Merriweather', Georgia, serif;
+    font-size: 28pt;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.8cm;
+    color: white;
+    max-width: 18cm;
+}
+
+.cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 12pt;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 3cm;
+    max-width: 14cm;
+}
+
+.cover-divider {
+    width: 4cm;
+    height: 2px;
+    background: rgba(255,255,255,0.3);
+    margin: 0 auto 1.5cm auto;
+}
+
+.cover-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 10pt;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.8;
+}
+
+.cover-meta strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+}
+
+/* Table of Contents */
+.toc-page {
+    page-break-after: always;
+    padding-top: 1cm;
+}
+
+.toc-page h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 18pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1cm;
+    padding-bottom: 0.3cm;
+    border-bottom: 3px solid #1e3a5f;
+}
+
+.toc-list {
+    list-style: none;
+    padding: 0;
+}
+
+.toc-list li {
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    padding: 0.3cm 0;
+    border-bottom: 1px solid #e5e7eb;
+    color: #1e3a5f;
+    font-weight: 500;
+}
+
+.toc-list li:last-child {
+    border-bottom: none;
+}
+
+.toc-list .toc-sub {
+    padding-left: 1.5cm;
+    font-size: 10pt;
+    font-weight: 400;
+    color: #4b5563;
+}
+
+/* Content Headings */
+h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 22pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 1.5cm;
+    margin-bottom: 0.5cm;
+    page-break-before: always;
+    padding-bottom: 0.3cm;
+    border-bottom: 3px solid #1e3a5f;
+}
+
+h1:first-of-type {
+    page-break-before: auto;
+}
+
+h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 16pt;
+    font-weight: 600;
+    color: #1e3a5f;
+    margin-top: 1cm;
+    margin-bottom: 0.4cm;
+    padding-bottom: 0.2cm;
+    border-bottom: 1px solid #d1d5db;
+}
+
+h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 13pt;
+    font-weight: 600;
+    color: #374151;
+    margin-top: 0.7cm;
+    margin-bottom: 0.3cm;
+}
+
+h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    font-weight: 600;
+    color: #4b5563;
+    margin-top: 0.5cm;
+    margin-bottom: 0.2cm;
+}
+
+/* Paragraphs */
+p {
+    margin-bottom: 0.4cm;
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* Lists */
+ul, ol {
+    margin-bottom: 0.4cm;
+    padding-left: 1cm;
+}
+
+li {
+    margin-bottom: 0.15cm;
+}
+
+li > ul, li > ol {
+    margin-top: 0.1cm;
+    margin-bottom: 0.1cm;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.5cm 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 9pt;
+    line-height: 1.4;
+    page-break-inside: avoid;
+}
+
+thead {
+    background: #0f172a;
+    color: white;
+}
+
+th {
+    padding: 0.25cm 0.3cm;
+    text-align: left;
+    font-weight: 600;
+    font-size: 8.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 0.2cm 0.3cm;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: top;
+}
+
+tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+tr:hover {
+    background: #f3f4f6;
+}
+
+/* Code blocks */
+pre {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #1e3a5f;
+    padding: 0.4cm;
+    margin: 0.4cm 0;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 8.5pt;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    page-break-inside: avoid;
+}
+
+code {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 9pt;
+    background: #f1f5f9;
+    padding: 0.05cm 0.15cm;
+    border-radius: 3px;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 4px solid #1e3a5f;
+    padding: 0.3cm 0.6cm;
+    margin: 0.5cm 0;
+    background: #f8fafc;
+    font-style: italic;
+    color: #374151;
+}
+
+blockquote p {
+    margin-bottom: 0.2cm;
+}
+
+/* Strong/Bold */
+strong {
+    font-weight: 700;
+    color: #111827;
+}
+
+/* Horizontal Rule */
+hr {
+    border: none;
+    border-top: 1px solid #d1d5db;
+    margin: 0.8cm 0;
+}
+
+/* Links */
+a {
+    color: #1e3a5f;
+    text-decoration: none;
+}
+
+/* Section break helper */
+.section-break {
+    page-break-before: always;
+}
+
+/* Verdict badges */
+.verdict-green {
+    display: inline-block;
+    background: #dcfce7;
+    color: #166534;
+    font-family: 'Inter', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 600;
+    padding: 0.08cm 0.3cm;
+    border-radius: 4px;
+    margin-left: 0.2cm;
+}
+
+.verdict-yellow {
+    display: inline-block;
+    background: #fef9c3;
+    color: #854d0e;
+    font-family: 'Inter', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 600;
+    padding: 0.08cm 0.3cm;
+    border-radius: 4px;
+    margin-left: 0.2cm;
+}
+
+.verdict-red {
+    display: inline-block;
+    background: #fee2e2;
+    color: #991b1b;
+    font-family: 'Inter', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 600;
+    padding: 0.08cm 0.3cm;
+    border-radius: 4px;
+    margin-left: 0.2cm;
+}
+
+/* Candidate card */
+.candidate-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 0.5cm;
+    margin: 0.4cm 0;
+    page-break-inside: avoid;
+}
+
+.candidate-card h4 {
+    margin-top: 0;
+}
+
+/* Tier heading */
+.tier-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 14pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 1cm;
+    margin-bottom: 0.4cm;
+    padding: 0.3cm 0.5cm;
+    border-left: 5px solid #1e3a5f;
+    background: #f8fafc;
+}
+
+/* Rank badge */
+.rank-badge {
+    display: inline-block;
+    background: #1e3a5f;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 10pt;
+    font-weight: 700;
+    width: 1cm;
+    height: 1cm;
+    line-height: 1cm;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 0.3cm;
+}
+
+/* Print adjustments */
+@media print {
+    body { font-size: 10pt; }
+    h1 { font-size: 20pt; }
+    h2 { font-size: 14pt; }
+    h3 { font-size: 12pt; }
+    table { font-size: 8pt; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Cover Page -->
+<div class="cover-page">
+    <div class="cover-logo">Elm Lake Labs</div>
+    <h1 class="cover-title">Company Rename Research — Round 2: Non-Literal Names</h1>
+    <p class="cover-subtitle">One-word, iconic brand names in the style of Tesla, Amazon, and Apple — names that suggest precision, intelligence, and transformation without saying "farm"</p>
+    <div class="cover-divider"></div>
+    <div class="cover-meta">
+        <strong>Prepared for</strong> Elm Lake Labs<br>
+        <strong>Date</strong> February 14, 2026<br>
+        <strong>Prepared by</strong> Henry Clawson, Executive Assistant
+    </div>
+</div>
+
+<!-- Table of Contents -->
+<div class="toc-page">
+<h2>Table of Contents</h2>
+<ul class="toc-list">
+<li>1. Methodology</li>
+<li>2. Full Candidate List (20 Names Evaluated)</li>
+<li class="toc-sub">Category 1: Mythology &amp; History</li>
+<li class="toc-sub">Category 2: Invented / Coined Words</li>
+<li class="toc-sub">Category 3: Repurposed Real Words</li>
+<li class="toc-sub">Category 4: Science &amp; Nature (Non-Farming)</li>
+<li class="toc-sub">Category 5: Short &amp; Punchy (4–6 Letters)</li>
+<li>3. Additional Candidates (Quick Assessment)</li>
+<li>4. Top 10 Candidates — Ranked</li>
+<li class="toc-sub">Tier 1: Strongest Candidates</li>
+<li class="toc-sub">Tier 2: Strong Candidates</li>
+<li class="toc-sub">Tier 3: Viable Candidates</li>
+<li>5. Honorable Mentions</li>
+<li>6. Recommendation</li>
+<li>7. Next Steps</li>
+</ul>
+</div>
+
+
+<!-- Report Content -->
+<div class="content">
+
+<h1>1. Methodology</h1>
+
+<p>Researched 40+ candidate names across 5 categories. For each, checked:</p>
+
+<ul>
+<li><strong>.com domain availability/ownership</strong></li>
+<li><strong>Existing companies</strong> using the name</li>
+<li><strong>Trademark/brand conflicts</strong> in adjacent industries</li>
+<li><strong>Sound-check:</strong> "Welcome to ___", "___ Technologies", "___ (NYSE: ____)"</li>
+</ul>
+
+<p>The goal: find one-word, iconic, non-agricultural brand names for ELL's precision ag tech company. Names that suggest precision, intelligence, scale, and transformation — without saying "farm."</p>
+
+<hr />
+
+<h1>2. Full Candidate List</h1>
+
+<h2>Category 1: Mythology &amp; History</h2>
+
+<div class="candidate-card">
+<h3>1. MERIDIAN <span class="verdict-red">CROWDED</span></h3>
+<p><strong>Meaning:</strong> A line of longitude; a peak/zenith. Navigation reference line.</p>
+<ul>
+<li><strong>Domain:</strong> meridian.com — TAKEN (Meridian Industries, manufacturing holding company)</li>
+<li><strong>Conflicts:</strong> Meridian Bank (NYSE: MRBK), Meridian Industries, CHG-MERIDIAN Group, multiple Meridian-named companies across industries</li>
+<li><strong>Pitch:</strong> Navigation, precision, the line everything aligns to</li>
+<li><strong>Sound check:</strong> "Welcome to Meridian" ✅ / "Meridian Technologies" ✅ / "Meridian (NYSE: MRDN)" ✅</li>
+</ul>
+<p><strong>Verdict:</strong> Too many existing Meridians. Great name but impossible to own.</p>
+</div>
+
+<div class="candidate-card">
+<h3>2. ORION <span class="verdict-red">CROWDED</span></h3>
+<p><strong>Meaning:</strong> Greek hunter constellation; used for navigation for millennia.</p>
+<ul>
+<li><strong>Domain:</strong> orion.com — TAKEN (Orion Advisor Solutions, fintech)</li>
+<li><strong>Conflicts:</strong> Orion Advisor Solutions, Orion Worldwide (IPG), Orion Corporation, Orion Energy Systems</li>
+<li><strong>Pitch:</strong> The guiding constellation — navigation written in the stars</li>
+<li><strong>Sound check:</strong> "Welcome to Orion" ✅ / "Orion Technologies" ✅ / "Orion (NYSE: ORIA)" ✅</li>
+</ul>
+<p><strong>Verdict:</strong> Beautiful name, but heavily used across industries.</p>
+</div>
+
+<div class="candidate-card">
+<h3>3. HELIOS <span class="verdict-red">ELIMINATED</span></h3>
+<p><strong>Meaning:</strong> Greek sun god. Source of all energy, growth, light.</p>
+<ul>
+<li><strong>Domain:</strong> helios.com — TAKEN (unclear current use)</li>
+<li><strong>Conflicts:</strong> Helios Technologies (NYSE: HLIO) — industrial tech company. Major conflict.</li>
+<li><strong>Pitch:</strong> The sun — the ultimate source of growth and power</li>
+<li><strong>Sound check:</strong> "Welcome to Helios" ✅ / "Helios Technologies" ✅ — but it's already taken (NYSE: HLIO)</li>
+</ul>
+<p><strong>Verdict:</strong> Direct NYSE conflict with Helios Technologies.</p>
+</div>
+
+<div class="candidate-card">
+<h3>4. TALOS <span class="verdict-yellow">RISKY</span></h3>
+<p><strong>Meaning:</strong> Bronze automaton from Greek mythology; guardian/protector that patrolled Crete.</p>
+<ul>
+<li><strong>Domain:</strong> talos.com — Unknown/likely taken</li>
+<li><strong>Conflicts:</strong> Cisco Talos (massive cybersecurity division of Cisco). Very well-known in tech.</li>
+<li><strong>Pitch:</strong> Autonomous guardian — a machine that protects and serves</li>
+<li><strong>Sound check:</strong> "Welcome to Talos" ✅ / "Talos Technologies" ✅ / "Talos (NYSE: TLOS)" ✅</li>
+</ul>
+<p><strong>Verdict:</strong> Cisco Talos is too prominent in tech. Would create confusion.</p>
+</div>
+
+<div class="candidate-card">
+<h3>5. VESTA <span class="verdict-yellow">POSSIBLE</span></h3>
+<p><strong>Meaning:</strong> Roman goddess of hearth, home, and sacred fire. Also an asteroid.</p>
+<ul>
+<li><strong>Domain:</strong> vesta.com — TAKEN (Vesta Innovations, Inc. — insurance/fintech)</li>
+<li><strong>Conflicts:</strong> Vesta Innovations (owns vesta.com), Corporación Inmobiliaria Vesta (NYSE: VTMX, Mexican real estate)</li>
+<li><strong>Pitch:</strong> Keeper of the sacred flame — stewardship, protection, the home fire</li>
+<li><strong>Sound check:</strong> "Welcome to Vesta" ✅ / "Vesta Technologies" ✅ / "Vesta (NYSE: VEST)" — but VTMX exists</li>
+</ul>
+<p><strong>Verdict:</strong> Domain taken but conflicts are in unrelated industries. Would need creative domain.</p>
+</div>
+
+<h2>Category 2: Invented / Coined Words</h2>
+
+<div class="candidate-card">
+<h3>6. TERION <span class="verdict-green">STRONG CANDIDATE</span></h3>
+<p><strong>Meaning:</strong> Coined. Evokes "terra" (earth) + "-ion" (tech suffix). Sounds like a sci-fi element.</p>
+<ul>
+<li><strong>Domain:</strong> terion.com — FOR SALE ✅</li>
+<li><strong>Conflicts:</strong> Terion Inc. (appears defunct, old patent analytics company)</li>
+<li><strong>Pitch:</strong> Earth-tech fusion. Abstract enough to not say "farming," rooted enough to feel grounded.</li>
+<li><strong>Sound check:</strong> "Welcome to Terion" ✅ / "Terion Technologies" ✅ / "Terion (NYSE: TERN)" ✅</li>
+</ul>
+<p><strong>Verdict:</strong> Domain purchasable, minimal conflicts, great sound.</p>
+</div>
+
+<div class="candidate-card">
+<h3>7. VEXOR <span class="verdict-green">STRONG CANDIDATE</span></h3>
+<p><strong>Meaning:</strong> Coined. Evokes "vector" + "vertex" — precision, direction, power.</p>
+<ul>
+<li><strong>Domain:</strong> vexor.com — FOR SALE ✅</li>
+<li><strong>Conflicts:</strong> No major companies found with this name</li>
+<li><strong>Pitch:</strong> Sharp, modern, sounds like something that moves with precision and force</li>
+<li><strong>Sound check:</strong> "Welcome to Vexor" ✅ / "Vexor Technologies" ✅ / "Vexor (NYSE: VXOR)" ✅</li>
+</ul>
+<p><strong>Verdict:</strong> Domain purchasable, clean slate. Slightly aggressive-sounding.</p>
+</div>
+
+<div class="candidate-card">
+<h3>8. NAVIX <span class="verdict-yellow">POSSIBLE</span></h3>
+<p><strong>Meaning:</strong> Coined. "Nav-" (navigation) + "-ix" (tech suffix à la Unix, Nutanix).</p>
+<ul>
+<li><strong>Domain:</strong> navix.com — TAKEN (Navix Business Consulting)</li>
+<li><strong>Conflicts:</strong> Navix consulting, NaviX surgical navigation (Claronav), Navix.io (payments)</li>
+<li><strong>Pitch:</strong> Navigation meets technology. Clean, modern, 5 letters.</li>
+<li><strong>Sound check:</strong> "Welcome to Navix" ✅ / "Navix Technologies" ✅ / "Navix (NYSE: NAVX)" ✅</li>
+</ul>
+<p><strong>Verdict:</strong> Domain taken by small consulting firm (potentially acquirable). Name is excellent.</p>
+</div>
+
+<div class="candidate-card">
+<h3>9. NEXARA <span class="verdict-yellow">DECENT</span></h3>
+<p><strong>Meaning:</strong> Coined. "Next" + "-ara" (era). Forward-looking, transformative.</p>
+<ul>
+<li><strong>Domain:</strong> nexara.com — Likely available (no results)</li>
+<li><strong>Conflicts:</strong> Nexara Capital (Hong Kong crypto), Nexara Consulting (Saudi Arabia), small companies</li>
+<li><strong>Pitch:</strong> The next era — transformation, forward motion, new horizons</li>
+<li><strong>Sound check:</strong> "Welcome to Nexara" ✅ / "Nexara Technologies" ✅ / "Nexara (NYSE: NXRA)" ✅</li>
+</ul>
+<p><strong>Verdict:</strong> Some small conflicts. 6 letters, slightly generic-sounding for coined names.</p>
+</div>
+
+<div class="candidate-card">
+<h3>10. VERIDIA <span class="verdict-yellow">POSSIBLE</span></h3>
+<p><strong>Meaning:</strong> Coined. "Veritas" (truth) + "-dia" (through). Suggests clarity, truth, seeing clearly.</p>
+<ul>
+<li><strong>Domain:</strong> veridia.com — TAKEN (parked/holding page)</li>
+<li><strong>Conflicts:</strong> Veridia Digital, Veridia LLC (Madison, CT), Veridia.io</li>
+<li><strong>Pitch:</strong> Truth and clarity — seeing the real picture of your land and data</li>
+<li><strong>Sound check:</strong> "Welcome to Veridia" ✅ / "Veridia Technologies" ✅ / "Veridia (NYSE: VRDA)" ✅</li>
+</ul>
+<p><strong>Verdict:</strong> Beautiful name but domain taken and some small conflicts. May feel too "green/eco."</p>
+</div>
+
+<h2>Category 3: Repurposed Real Words</h2>
+
+<div class="candidate-card">
+<h3>11. TRAVERSE <span class="verdict-yellow">POSSIBLE</span></h3>
+<p><strong>Meaning:</strong> To travel across; a surveying term for measuring land by crossing it.</p>
+<ul>
+<li><strong>Domain:</strong> traverse.com — Likely parked/taken</li>
+<li><strong>Conflicts:</strong> Traverse Technologies (ARC subsidiary, travel tech), Traverse Technologies (FL, cloud services)</li>
+<li><strong>Pitch:</strong> Crossing the landscape — surveying, moving through terrain with purpose</li>
+<li><strong>Sound check:</strong> "Welcome to Traverse" ✅ / "Traverse Technologies" — taken / "Traverse (NYSE: TRVS)" ✅</li>
+</ul>
+<p><strong>Verdict:</strong> Some conflicts but in unrelated industries. Strong word. 8 letters (slightly long).</p>
+</div>
+
+<div class="candidate-card">
+<h3>12. BEARING <span class="verdict-yellow">CHALLENGING</span></h3>
+<p><strong>Meaning:</strong> Navigation direction; also: "getting your bearings" — orientation, position.</p>
+<ul>
+<li><strong>Domain:</strong> bearing.com — Likely taken (bearing industry)</li>
+<li><strong>Conflicts:</strong> Bearings Inc. (industrial), many bearing manufacturers own variants</li>
+<li><strong>Pitch:</strong> Finding your bearing — direction, position, navigation</li>
+<li><strong>Sound check:</strong> "Welcome to Bearing" ✅ / "Bearing Technologies" ✅ / "Bearing (NYSE: BRNG)" ✅</li>
+</ul>
+<p><strong>Verdict:</strong> Too associated with industrial bearings (hardware). Confusing.</p>
+</div>
+
+<div class="candidate-card">
+<h3>13. CALIBER <span class="verdict-yellow">CROWDED</span></h3>
+<p><strong>Meaning:</strong> Quality, precision, standard of excellence; also: diameter measurement.</p>
+<ul>
+<li><strong>Domain:</strong> caliber.com — Likely taken/parked</li>
+<li><strong>Conflicts:</strong> Caliber Technologies (multiple companies), Caliber.global, several Caliber-named firms</li>
+<li><strong>Pitch:</strong> A measure of excellence — precision, quality, the highest standard</li>
+<li><strong>Sound check:</strong> "Welcome to Caliber" ✅ / "Caliber Technologies" — exists / "Caliber (NYSE: CLBR)" ✅</li>
+</ul>
+<p><strong>Verdict:</strong> Great word but too many companies already use it.</p>
+</div>
+
+<div class="candidate-card">
+<h3>14. KEYSTONE <span class="verdict-yellow">CROWDED</span></h3>
+<p><strong>Meaning:</strong> The central stone in an arch; the essential piece that holds everything together.</p>
+<ul>
+<li><strong>Domain:</strong> keystone.com — Likely taken</li>
+<li><strong>Conflicts:</strong> Multiple Keystone companies across industries</li>
+<li><strong>Pitch:</strong> The critical piece — everything depends on it</li>
+<li><strong>Sound check:</strong> "Welcome to Keystone" ✅ / "Keystone Technologies" ✅ / "Keystone (NYSE: KYST)" ✅</li>
+</ul>
+<p><strong>Verdict:</strong> Very common company name.</p>
+</div>
+
+<div class="candidate-card">
+<h3>15. HALCYON <span class="verdict-green">STRONG CANDIDATE</span></h3>
+<p><strong>Meaning:</strong> Calm, peaceful, golden period. Mythological bird that calmed the seas.</p>
+<ul>
+<li><strong>Domain:</strong> halcyon.com — Available through broker (MediaOptions)</li>
+<li><strong>Conflicts:</strong> Some small companies, but nothing dominant in tech</li>
+<li><strong>Pitch:</strong> The calm, golden era — bringing order and prosperity to the land</li>
+<li><strong>Sound check:</strong> "Welcome to Halcyon" ✅ / "Halcyon Technologies" ✅ / "Halcyon (NYSE: HLYN)" ✅</li>
+</ul>
+<p><strong>Verdict:</strong> Domain brokerable, unique, elegant. May feel too "soft" for ag tech though.</p>
+</div>
+
+<h2>Category 4: Science &amp; Nature (Non-Farming)</h2>
+
+<div class="candidate-card">
+<h3>16. PARALLAX <span class="verdict-yellow">CHALLENGING</span></h3>
+<p><strong>Meaning:</strong> Apparent shift in position of an object when viewed from different angles. Used in surveying and GPS.</p>
+<ul>
+<li><strong>Domain:</strong> parallax.com — TAKEN (Parallax Inc., microcontrollers/robotics)</li>
+<li><strong>Conflicts:</strong> Parallax Inc. (hardware/education), Parallax Technologies, GetParallax (SaaS)</li>
+<li><strong>Pitch:</strong> Precision through perspective — seeing the world from the right angle</li>
+<li><strong>Sound check:</strong> "Welcome to Parallax" ✅ / "Parallax Technologies" — exists / "Parallax (NYSE: PRLX)" ✅</li>
+</ul>
+<p><strong>Verdict:</strong> Direct competitor overlap (Parallax makes hardware). Too much confusion.</p>
+</div>
+
+<div class="candidate-card">
+<h3>17. AZIMUTH <span class="verdict-green">STRONG CANDIDATE</span></h3>
+<p><strong>Meaning:</strong> Angular measurement in navigation/surveying. The horizontal angle from a reference direction.</p>
+<ul>
+<li><strong>Domain:</strong> azimuth.com — Unknown status</li>
+<li><strong>Conflicts:</strong> Azimuth Technology (precision manufacturing), Azimuth Corporation, Azimuth Radio Technologies (maritime)</li>
+<li><strong>Pitch:</strong> The exact angle — precision measurement, knowing exactly where you are and where you're going</li>
+<li><strong>Sound check:</strong> "Welcome to Azimuth" ✅ / "Azimuth Technologies" — exists / "Azimuth (NYSE: AZMT)" ✅</li>
+</ul>
+<p><strong>Verdict:</strong> Despite some conflicts, none are major tech players. Very relevant to GNSS/navigation without being literal.</p>
+</div>
+
+<div class="candidate-card">
+<h3>18. LOCUS <span class="verdict-yellow">RISKY</span></h3>
+<p><strong>Meaning:</strong> A particular position, point, or place. In math: a set of all points satisfying a condition.</p>
+<ul>
+<li><strong>Domain:</strong> locus.com — TAKEN (unclear) / locus.sh is taken (logistics company)</li>
+<li><strong>Conflicts:</strong> Locus (logistics AI company, well-funded), Locus Robotics</li>
+<li><strong>Pitch:</strong> The exact point — position, precision, the place where everything converges</li>
+<li><strong>Sound check:</strong> "Welcome to Locus" ✅ / "Locus Technologies" ✅ / "Locus (NYSE: LOCS)" ✅</li>
+</ul>
+<p><strong>Verdict:</strong> Locus.sh is a well-known logistics tech company. Would create confusion.</p>
+</div>
+
+<div class="candidate-card">
+<h3>19. TESSERA <span class="verdict-red">ELIMINATED</span></h3>
+<p><strong>Meaning:</strong> A small tile in a mosaic. Each piece fits precisely to create the whole picture.</p>
+<ul>
+<li><strong>Domain:</strong> tessera.com — Likely taken/parked (Tessera was Xperi, semiconductor IP)</li>
+<li><strong>Conflicts:</strong> Tessera Technologies was a major semiconductor IP company (now Xperi). Tessera Data.</li>
+<li><strong>Pitch:</strong> Precision pieces that form the complete picture — data points creating the whole</li>
+<li><strong>Sound check:</strong> "Welcome to Tessera" ✅ / "Tessera Technologies" — was a company / "Tessera (NYSE: TSRA)" — was a ticker</li>
+</ul>
+<p><strong>Verdict:</strong> Was literally a public tech company (TSRA). Too much legacy confusion.</p>
+</div>
+
+<h2>Category 5: Short &amp; Punchy (4–6 Letters)</h2>
+
+<div class="candidate-card">
+<h3>20. APEX <span class="verdict-red">CROWDED</span></h3>
+<p><strong>Meaning:</strong> The highest point, peak, summit.</p>
+<ul>
+<li><strong>Domain:</strong> apex.com — Unknown</li>
+<li><strong>Conflicts:</strong> Apex Legends (EA), Apex Systems (ASGN), Apex Group of Companies, many Apex-named companies</li>
+<li><strong>Pitch:</strong> The peak — striving for the top, the best possible outcome</li>
+<li><strong>Sound check:</strong> "Welcome to Apex" ✅ / "Apex Technologies" ✅ / "Apex (NYSE: APXX)" ✅</li>
+</ul>
+<p><strong>Verdict:</strong> Extremely common company name. Impossible to own as a brand.</p>
+</div>
+
+<hr />
+
+<h1>3. Additional Candidates (Quick Assessment)</h1>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Domain Status</th>
+<th>Major Conflicts</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Verdant</strong></td>
+<td>verdant.com — likely taken</td>
+<td>Verdant Technologies (NV), Verdant AI</td>
+<td>🟡 Too "green/eco"</td>
+</tr>
+<tr>
+<td><strong>Velox</strong></td>
+<td>velox.com — likely taken</td>
+<td>Velox Ltd (digital printing), Volant (owns volant.com)</td>
+<td>🟡 Some conflicts</td>
+</tr>
+<tr>
+<td><strong>Stratos</strong></td>
+<td>stratos.com — unknown</td>
+<td>Stratos Global (telecom, acquired), STRATOS Technologies</td>
+<td>🟡 Possible</td>
+</tr>
+<tr>
+<td><strong>Axiom</strong></td>
+<td>axiom.com — taken</td>
+<td>Axiom Space, Axiom Technology Group, Acxiom</td>
+<td>🔴 Very crowded</td>
+</tr>
+<tr>
+<td><strong>Polaris</strong></td>
+<td>polaris.com — TAKEN</td>
+<td>Polaris Inc (NYSE: PII) — massive company</td>
+<td>🔴 Eliminated</td>
+</tr>
+<tr>
+<td><strong>Praxis</strong></td>
+<td>praxis.com — TAKEN (IT firm)</td>
+<td>Praxis Nation, Praxis Inc.</td>
+<td>🟡 Crowded</td>
+</tr>
+<tr>
+<td><strong>Cardinal</strong></td>
+<td>cardinal.com — taken</td>
+<td>Cardinal Commerce (Visa), Cardinal Health</td>
+<td>🔴 Eliminated</td>
+</tr>
+<tr>
+<td><strong>Beacon</strong></td>
+<td>beacon.com — TAKEN</td>
+<td>Beacon supply chain, many Beacon companies</td>
+<td>🟡 Crowded</td>
+</tr>
+<tr>
+<td><strong>Aegis</strong></td>
+<td>aegis.com — taken</td>
+<td>Aegis Software, Aegis Aerospace, Dentsu Aegis</td>
+<td>🔴 Very crowded</td>
+</tr>
+<tr>
+<td><strong>Zenith</strong></td>
+<td>zenith.com — TAKEN</td>
+<td>Zenith Electronics (LG), Zenith Watches (LVMH)</td>
+<td>🔴 Eliminated</td>
+</tr>
+<tr>
+<td><strong>Solera</strong></td>
+<td>solera.com — TAKEN</td>
+<td>Solera Holdings (major auto/insurance tech)</td>
+<td>🔴 Eliminated</td>
+</tr>
+<tr>
+<td><strong>Lattice</strong></td>
+<td>lattice.com — TAKEN</td>
+<td>Lattice (HR software), Lattice Semiconductor (NASDAQ: LSCC)</td>
+<td>🔴 Eliminated</td>
+</tr>
+<tr>
+<td><strong>Vertex</strong></td>
+<td>vertex.com — TAKEN</td>
+<td>Vertex Inc (NYSE: VERX), Vertex Pharma (NASDAQ: VRTX)</td>
+<td>🔴 Eliminated</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h1>4. Top 10 Candidates — Ranked</h1>
+
+<div class="tier-heading">Tier 1 — Strongest Candidates</div>
+
+<div class="candidate-card">
+<h3><span class="rank-badge">1</span> TERION</h3>
+<p><strong>Why:</strong> Coined word. Evokes "terra" (earth) + futuristic "-ion" suffix. Domain (terion.com) is FOR SALE. Minimal existing conflicts (defunct company). Sounds like it belongs on a building, a keynote stage, and the NYSE.</p>
+<table>
+<thead>
+<tr><th>Attribute</th><th>Detail</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Domain</strong></td><td>terion.com — FOR SALE ✅</td></tr>
+<tr><td><strong>Ticker</strong></td><td>TERN</td></tr>
+<tr><td><strong>Sound Check</strong></td><td>"Welcome to Terion" / "Terion Technologies" / "Terion (NYSE: TERN)" — all excellent</td></tr>
+<tr><td><strong>Risk</strong></td><td>Low. Need to verify domain price.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="candidate-card">
+<h3><span class="rank-badge">2</span> AZIMUTH</h3>
+<p><strong>Why:</strong> Real navigation/surveying term that isn't "farming." Precision measurement of direction. Deeply relevant to GNSS and autosteer without being literal. Technical authority without being obscure.</p>
+<table>
+<thead>
+<tr><th>Attribute</th><th>Detail</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Domain</strong></td><td>azimuth.com — Status unclear. azimuthtechnologies.com taken (maritime). May need variant.</td></tr>
+<tr><td><strong>Ticker</strong></td><td>AZMT</td></tr>
+<tr><td><strong>Sound Check</strong></td><td>"Welcome to Azimuth" / "Azimuth Technologies" / "Azimuth (NYSE: AZMT)" — all outstanding</td></tr>
+<tr><td><strong>Risk</strong></td><td>Medium. Some small companies use the name. Domain may need negotiation or variant (.io, .ag, .tech).</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="candidate-card">
+<h3><span class="rank-badge">3</span> VEXOR</h3>
+<p><strong>Why:</strong> Coined word. Sharp, modern, aggressive. Evokes "vector" and "vertex." Domain (vexor.com) is FOR SALE. Complete clean slate — no major companies use this name.</p>
+<table>
+<thead>
+<tr><th>Attribute</th><th>Detail</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Domain</strong></td><td>vexor.com — FOR SALE ✅</td></tr>
+<tr><td><strong>Ticker</strong></td><td>VXOR</td></tr>
+<tr><td><strong>Sound Check</strong></td><td>"Welcome to Vexor" / "Vexor Technologies" / "Vexor (NYSE: VXOR)" — powerful</td></tr>
+<tr><td><strong>Risk</strong></td><td>Low. Slightly aggressive/edgy sound — could be a plus or minus.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="tier-heading">Tier 2 — Strong Candidates</div>
+
+<div class="candidate-card">
+<h3><span class="rank-badge">4</span> HALCYON</h3>
+<p><strong>Why:</strong> Elegant mythological reference. Suggests a golden age, calm prosperity, bringing order to chaos. Available through domain broker. Distinctive — nobody in ag tech or adjacent tech uses it.</p>
+<table>
+<thead>
+<tr><th>Attribute</th><th>Detail</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Domain</strong></td><td>halcyon.com — Available via broker (MediaOptions) ✅</td></tr>
+<tr><td><strong>Ticker</strong></td><td>HLYN</td></tr>
+<tr><td><strong>Sound Check</strong></td><td>"Welcome to Halcyon" / "Halcyon Technologies" / "Halcyon (NYSE: HLYN)" — premium, elegant</td></tr>
+<tr><td><strong>Risk</strong></td><td>Medium. May feel too "soft" for ag tech machinery. Domain broker = premium pricing.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="candidate-card">
+<h3><span class="rank-badge">5</span> NAVIX</h3>
+<p><strong>Why:</strong> Perfect blend of "navigation" + tech suffix. 5 letters, punchy, modern. Immediately suggests direction-finding and positioning technology without saying "farm."</p>
+<table>
+<thead>
+<tr><th>Attribute</th><th>Detail</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Domain</strong></td><td>navix.com — TAKEN (small consulting firm, potentially acquirable)</td></tr>
+<tr><td><strong>Ticker</strong></td><td>NAVX</td></tr>
+<tr><td><strong>Sound Check</strong></td><td>"Welcome to Navix" / "Navix Technologies" / "Navix (NYSE: NAVX)" — clean, modern</td></tr>
+<tr><td><strong>Risk</strong></td><td>Medium. Domain acquisition needed. Some small companies use the name.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="candidate-card">
+<h3><span class="rank-badge">6</span> TRAVERSE</h3>
+<p><strong>Why:</strong> Real English word meaning "to cross/travel across." Also a surveying term. Suggests movement across landscapes. 8 letters (slightly long) but memorable and authoritative.</p>
+<table>
+<thead>
+<tr><th>Attribute</th><th>Detail</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Domain</strong></td><td>traverse.com — Likely taken, but conflicts are in different industries</td></tr>
+<tr><td><strong>Ticker</strong></td><td>TRVS</td></tr>
+<tr><td><strong>Sound Check</strong></td><td>"Welcome to Traverse" / "Traverse Technologies" / "Traverse (NYSE: TRVS)" — commanding</td></tr>
+<tr><td><strong>Risk</strong></td><td>Medium-high. Multiple companies use the name. Domain likely expensive.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="tier-heading">Tier 3 — Viable Candidates</div>
+
+<div class="candidate-card">
+<h3><span class="rank-badge">7</span> STRATOS</h3>
+<p><strong>Why:</strong> Evokes "stratosphere" — altitude, vision, looking down from above (satellite imagery, drones, overview of the land). Sci-fi enough to feel tech-forward.</p>
+<table>
+<thead>
+<tr><th>Attribute</th><th>Detail</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Domain</strong></td><td>stratos.com — Status unclear, may be available</td></tr>
+<tr><td><strong>Ticker</strong></td><td>STRS (taken by Stratus Properties — would need STRA or similar)</td></tr>
+<tr><td><strong>Sound Check</strong></td><td>"Welcome to Stratos" / "Stratos Technologies" / "Stratos (NYSE: STRA)" — strong</td></tr>
+<tr><td><strong>Risk</strong></td><td>Medium. Stratos Global existed (acquired 2009). Some legacy confusion.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="candidate-card">
+<h3><span class="rank-badge">8</span> VERIDIA</h3>
+<p><strong>Why:</strong> Coined from "veritas" (truth). Beautiful, feminine, elegant. Suggests clarity and truth in data. Would stand out in the male-dominated ag tech space.</p>
+<table>
+<thead>
+<tr><th>Attribute</th><th>Detail</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Domain</strong></td><td>veridia.com — TAKEN (parked holding page)</td></tr>
+<tr><td><strong>Ticker</strong></td><td>VRDA</td></tr>
+<tr><td><strong>Sound Check</strong></td><td>"Welcome to Veridia" / "Veridia Technologies" / "Veridia (NYSE: VRDA)" — elegant</td></tr>
+<tr><td><strong>Risk</strong></td><td>Medium-high. Domain taken. May feel too "green tech" or "sustainability" rather than precision/power.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="candidate-card">
+<h3><span class="rank-badge">9</span> NEXARA</h3>
+<p><strong>Why:</strong> Coined. "Next era." Forward-looking, transformative. Suggests being ahead of the curve.</p>
+<table>
+<thead>
+<tr><th>Attribute</th><th>Detail</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Domain</strong></td><td>nexara.com — Possibly available</td></tr>
+<tr><td><strong>Ticker</strong></td><td>NXRA</td></tr>
+<tr><td><strong>Sound Check</strong></td><td>"Welcome to Nexara" / "Nexara Technologies" / "Nexara (NYSE: NXRA)" — decent</td></tr>
+<tr><td><strong>Risk</strong></td><td>Medium. Some small international companies use the name. Slightly generic for a coined word.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="candidate-card">
+<h3><span class="rank-badge">10</span> LOCUS</h3>
+<p><strong>Why:</strong> Latin for "place/position." Mathematical precision. Perfect metaphor for GPS/positioning technology. Short, elegant, authoritative.</p>
+<table>
+<thead>
+<tr><th>Attribute</th><th>Detail</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Domain</strong></td><td>locus.com — TAKEN</td></tr>
+<tr><td><strong>Ticker</strong></td><td>LOCS</td></tr>
+<tr><td><strong>Sound Check</strong></td><td>"Welcome to Locus" / "Locus Technologies" / "Locus (NYSE: LOCS)" — excellent</td></tr>
+<tr><td><strong>Risk</strong></td><td>High. Locus.sh is a well-funded logistics AI company. Significant brand confusion risk.</td></tr>
+</tbody>
+</table>
+</div>
+
+<hr />
+
+<h1>5. Honorable Mentions</h1>
+
+<p>These names didn't make the top 10 but deserve recognition:</p>
+
+<ul>
+<li><strong>VESTA</strong> — Beautiful name, NYSE conflict (VTMX), domain taken</li>
+<li><strong>TALOS</strong> — Cisco Talos too prominent in tech</li>
+<li><strong>BEACON</strong> — Great metaphor but extremely common company name</li>
+<li><strong>PRAXIS</strong> — "Theory into practice" — good meaning but crowded</li>
+</ul>
+
+<hr />
+
+<h1>6. Recommendation</h1>
+
+<p><strong>If budget allows for domain acquisition:</strong> Go with <strong>TERION</strong> (#1) or <strong>AZIMUTH</strong> (#2).</p>
+
+<ul>
+<li><strong>TERION</strong> is the safest bet — .com is for sale, no major conflicts, coined word means John &amp; Mark fully own the brand meaning. It can be whatever they make it.</li>
+<li><strong>AZIMUTH</strong> is the most meaningful — it literally describes angular measurement in navigation, which is exactly what GNSS/autosteer does. It's a real word with instant technical credibility.</li>
+<li><strong>VEXOR</strong> is the wild card — sharp, modern, and domain is for sale. Best choice if they want to project power and aggression (think Deere competitor energy).</li>
+</ul>
+
+<p><strong>If they want something more abstract/aspirational:</strong> <strong>HALCYON</strong> — elegant, mythological, available through broker. Says "we're bringing a golden age to agriculture."</p>
+
+<hr />
+
+<h1>7. Next Steps</h1>
+
+<ol>
+<li>Check domain pricing for terion.com and vexor.com (both listed as for sale)</li>
+<li>Do a more thorough trademark search (USPTO TESS) for top 3 picks</li>
+<li>Check social media handle availability (@terion, @azimuth, @vexor)</li>
+<li>Test with trusted advisors — which name do people remember after hearing it once?</li>
+<li>Consider: which name would look best on the side of an autosteer unit?</li>
+</ol>
+
+<hr />
+
+<p><em>Research conducted for John Moss &amp; Mark Mahoney.</em></p>
+
+</div>
+
+</body>
+</html>
