@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ag Tech Competitive Landscape</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap');
+
+@page {
+    size: letter;
+    margin: 2.5cm 2.5cm 3cm 2.5cm;
+    @bottom-center {
+        content: counter(page);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 9pt;
+        color: #6b7280;
+    }
+    @bottom-right {
+        content: "Elm Lake Labs";
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 8pt;
+        color: #9ca3af;
+    }
+}
+
+@page :first {
+    margin: 0;
+    @bottom-center { content: none; }
+    @bottom-right { content: none; }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+    font-size: 10.5pt;
+    line-height: 1.7;
+    color: #1f2937;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Cover Page */
+.cover-page {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 3cm;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+    color: white;
+    text-align: center;
+}
+
+.cover-logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 14pt;
+    font-weight: 300;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 3cm;
+}
+
+.cover-title {
+    font-family: 'Merriweather', Georgia, serif;
+    font-size: 28pt;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.8cm;
+    color: white;
+    max-width: 18cm;
+}
+
+.cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 12pt;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 3cm;
+    max-width: 14cm;
+}
+
+.cover-divider {
+    width: 4cm;
+    height: 2px;
+    background: rgba(255,255,255,0.3);
+    margin: 0 auto 1.5cm auto;
+}
+
+.cover-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 10pt;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.8;
+}
+
+.cover-meta strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+}
+
+/* Table of Contents */
+.toc-page {
+    page-break-after: always;
+    padding-top: 1cm;
+}
+
+.toc-page h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 18pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1cm;
+    padding-bottom: 0.3cm;
+    border-bottom: 3px solid #1e3a5f;
+}
+
+.toc-list {
+    list-style: none;
+    padding: 0;
+}
+
+.toc-list li {
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    padding: 0.3cm 0;
+    border-bottom: 1px solid #e5e7eb;
+    color: #1e3a5f;
+    font-weight: 500;
+}
+
+.toc-list li:last-child {
+    border-bottom: none;
+}
+
+.toc-list .toc-sub {
+    padding-left: 1.5cm;
+    font-size: 10pt;
+    font-weight: 400;
+    color: #4b5563;
+}
+
+/* Content Headings */
+h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 22pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 1.5cm;
+    margin-bottom: 0.5cm;
+    page-break-before: always;
+    padding-bottom: 0.3cm;
+    border-bottom: 3px solid #1e3a5f;
+}
+
+h1:first-of-type {
+    page-break-before: auto;
+}
+
+h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 16pt;
+    font-weight: 600;
+    color: #1e3a5f;
+    margin-top: 1cm;
+    margin-bottom: 0.4cm;
+    padding-bottom: 0.2cm;
+    border-bottom: 1px solid #d1d5db;
+}
+
+h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 13pt;
+    font-weight: 600;
+    color: #374151;
+    margin-top: 0.7cm;
+    margin-bottom: 0.3cm;
+}
+
+h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    font-weight: 600;
+    color: #4b5563;
+    margin-top: 0.5cm;
+    margin-bottom: 0.2cm;
+}
+
+/* Paragraphs */
+p {
+    margin-bottom: 0.4cm;
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* Lists */
+ul, ol {
+    margin-bottom: 0.4cm;
+    padding-left: 1cm;
+}
+
+li {
+    margin-bottom: 0.15cm;
+}
+
+li > ul, li > ol {
+    margin-top: 0.1cm;
+    margin-bottom: 0.1cm;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.5cm 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 9pt;
+    line-height: 1.4;
+    page-break-inside: avoid;
+}
+
+thead {
+    background: #0f172a;
+    color: white;
+}
+
+th {
+    padding: 0.25cm 0.3cm;
+    text-align: left;
+    font-weight: 600;
+    font-size: 8.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 0.2cm 0.3cm;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: top;
+}
+
+tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+tr:hover {
+    background: #f3f4f6;
+}
+
+/* Code blocks */
+pre {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #1e3a5f;
+    padding: 0.4cm;
+    margin: 0.4cm 0;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 8.5pt;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    page-break-inside: avoid;
+}
+
+code {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 9pt;
+    background: #f1f5f9;
+    padding: 0.05cm 0.15cm;
+    border-radius: 3px;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 4px solid #1e3a5f;
+    padding: 0.3cm 0.6cm;
+    margin: 0.5cm 0;
+    background: #f8fafc;
+    font-style: italic;
+    color: #374151;
+}
+
+blockquote p {
+    margin-bottom: 0.2cm;
+}
+
+/* Strong/Bold */
+strong {
+    font-weight: 700;
+    color: #111827;
+}
+
+/* Horizontal Rule */
+hr {
+    border: none;
+    border-top: 1px solid #d1d5db;
+    margin: 0.8cm 0;
+}
+
+/* Links */
+a {
+    color: #1e3a5f;
+    text-decoration: none;
+}
+
+/* Section break helper */
+.section-break {
+    page-break-before: always;
+}
+
+/* Emoji handling */
+.emoji {
+    font-style: normal;
+}
+
+/* Print adjustments */
+@media print {
+    body { font-size: 10pt; }
+    h1 { font-size: 20pt; }
+    h2 { font-size: 14pt; }
+    h3 { font-size: 12pt; }
+    table { font-size: 8pt; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Cover Page -->
+<div class="cover-page">
+    <div class="cover-logo">Elm Lake Labs</div>
+    <h1 class="cover-title">Ag Tech Competitive Landscape</h1>
+    <p class="cover-subtitle">Market analysis, key players, and opportunity gaps for Elm Lake Labs in the precision agriculture industry</p>
+    <div class="cover-divider"></div>
+    <div class="cover-meta">
+        <strong>Prepared for</strong> Elm Lake Labs<br>
+        <strong>Date</strong> February 14, 2026<br>
+        <strong>Prepared by</strong> Henry Clawson
+    </div>
+</div>
+
+<!-- Table of Contents -->
+<div class="toc-page">
+<h2>Table of Contents</h2>
+<ul class="toc-list">
+<li>1. Market Overview &amp; Size</li>
+<li class="toc-sub">Global Ag Tech Market</li>
+<li class="toc-sub">Precision Agriculture</li>
+<li class="toc-sub">Farm Management Software/SaaS</li>
+<li class="toc-sub">Precision Farming Software &amp; Services</li>
+<li class="toc-sub">Agricultural Drones</li>
+<li class="toc-sub">Farming-as-a-Service</li>
+<li class="toc-sub">Agricultural Equipment Dealer/Distribution Channel</li>
+<li>2. Leaders by Category</li>
+<li class="toc-sub">A. Precision Agriculture — Autosteer, Guidance, GNSS</li>
+<li class="toc-sub">B. Farm Management Software / SaaS</li>
+<li class="toc-sub">C. Drone / Aerial / GIS</li>
+<li class="toc-sub">D. AI / Data Analytics in Agriculture</li>
+<li class="toc-sub">E. Scouting / IPM — Competitors to Pinpoint</li>
+<li>3. Winning Strategies — How Leaders Are Positioning</li>
+<li class="toc-sub">3.1 Vertical Integration (Hardware + Software)</li>
+<li class="toc-sub">3.2 Data Moats</li>
+<li class="toc-sub">3.3 Distribution / Dealer Networks</li>
+<li class="toc-sub">3.4 AI / Autonomy Bets</li>
+<li class="toc-sub">3.5 Affordable Disruption (Chinese Manufacturers)</li>
+<li>4. Geographic Distribution — Where Are Ag Tech Companies?</li>
+<li class="toc-sub">Major Ag Tech Hubs</li>
+<li class="toc-sub">Key Takeaway on Geography</li>
+<li>5. Opportunity Gaps — Where Incumbents Are Failing</li>
+<li class="toc-sub">Gap 1: Affordable Autosteer — The FJD Disruption</li>
+<li class="toc-sub">Gap 2: Mobile-First Scouting</li>
+<li class="toc-sub">Gap 3: AI-Powered Farm Management</li>
+<li class="toc-sub">Gap 4: Fragmented Tech Stack</li>
+<li class="toc-sub">Gap 5: Specialty Crop Neglect</li>
+<li class="toc-sub">Gap 6: Dealer Network Disruption</li>
+<li class="toc-sub">Gap 7: Financing Innovation</li>
+<li>6. Key Takeaways</li>
+<li class="toc-sub">The Landscape in One Sentence</li>
+<li class="toc-sub">For ELL Specifically:</li>
+<li>Sources</li>
+</ul>
+</div>
+
+
+<!-- Report Content -->
+<div class="content">
+<h2 id="1-market-overview-size">1. Market Overview &amp; Size</h2>
+<h3 id="global-ag-tech-market">Global Ag Tech Market</h3>
+<ul>
+<li><strong>Total market (2025):</strong> $26.27 billion (Precedence Research)</li>
+<li><strong>Projected (2034):</strong> $74.03 billion — <strong>CAGR 12.2%</strong></li>
+<li><strong>VC funding (2025):</strong> $4.8B across 735 deals (down from $5.1B/913 deals in 2024)</li>
+<li>Investors shifting toward <strong>AI, precision ag, and robotics</strong> — away from biologicals</li>
+</ul>
+<h3 id="precision-agriculture">Precision Agriculture</h3>
+<ul>
+<li><strong>Market size (2025):</strong> ~$9.5–11.2 billion (multiple estimates)</li>
+<li><strong>Projected (2035):</strong> $25.5–27.3 billion — <strong>CAGR 9.3–10%</strong></li>
+<li><strong>North America (2025):</strong> $4.1 billion, projected to $6.5B by 2032</li>
+<li><strong>Fastest growth application:</strong> Precision spraying (CAGR 15.4%)</li>
+</ul>
+<h3 id="farm-management-softwaresaas">Farm Management Software/SaaS</h3>
+<ul>
+<li><strong>Market size (2025):</strong> $2.8–4.2 billion (estimates vary by scope)</li>
+<li><strong>Projected (2030):</strong> $5.1–10.6 billion — <strong>CAGR 11–17.3%</strong></li>
+<li>Precision farming segment = 43% of FMS market</li>
+<li>Cloud computing adoption is the primary growth driver</li>
+</ul>
+<h3 id="precision-farming-software-services">Precision Farming Software &amp; Services</h3>
+<ul>
+<li><strong>Market size (2025):</strong> $1.9 billion</li>
+<li><strong>Projected (2029):</strong> $3.05 billion — <strong>CAGR 12.5%</strong></li>
+</ul>
+<h3 id="agricultural-drones">Agricultural Drones</h3>
+<ul>
+<li><strong>Market size (2025):</strong> ~$4 billion</li>
+<li><strong>Projected (2032):</strong> $8.65 billion</li>
+<li>North America holds ~45% market share</li>
+</ul>
+<h3 id="farming-as-a-service">Farming-as-a-Service</h3>
+<ul>
+<li><strong>U.S. market (2025):</strong> $1.53 billion</li>
+<li><strong>Projected (2034):</strong> $6.15 billion — <strong>CAGR 14.9%</strong></li>
+</ul>
+<h3 id="agricultural-equipment-dealerdistribution-channel">Agricultural Equipment Dealer/Distribution Channel</h3>
+<ul>
+<li>U.S. farm equipment dealer network is estimated at 5,000+ dealer locations</li>
+<li>Equipment-as-a-service and dealer-led precision ag adoption growing rapidly</li>
+<li>Dealer networks remain the primary channel for precision ag hardware (autosteer, guidance, sensors)</li>
+</ul>
+<hr />
+<h2 id="2-leaders-by-category">2. Leaders by Category</h2>
+<h3 id="a-precision-agriculture-autosteer-guidance-gnss">A. Precision Agriculture — Autosteer, Guidance, GNSS</h3>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>HQ</th>
+<th>Key Products</th>
+<th>Market Position</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>John Deere</strong></td>
+<td>Moline, IL</td>
+<td>AutoTrac, StarFire receivers, Operations Center</td>
+<td>Market leader. 500K+ farms on Operations Center. Acquired Sentera (aerial scouting) and GUSS Automation (autonomous spraying) in 2025. SpaceX Starlink connectivity partnership.</td>
+</tr>
+<tr>
+<td><strong>PTx Trimble</strong> (AGCO/Trimble JV)</td>
+<td>Westminster, CO</td>
+<td>Autopilot, GFX displays, Precision Planting</td>
+<td>Formed April 2024. AGCO owns 85%. Combines Trimble&rsquo;s precision ag business + AGCO&rsquo;s JCA Technologies. Serves mixed-fleet market (factory-fit and retrofit).</td>
+</tr>
+<tr>
+<td><strong>CNH Industrial</strong> (Case IH/New Holland)</td>
+<td>Racine, WI</td>
+<td>AFS guidance, AccuGuide, PLM Intelligence</td>
+<td>Acquired Raven Industries (2021) for autonomous tech. Integrated Raven&rsquo;s autosteer and autonomy capabilities.</td>
+</tr>
+<tr>
+<td><strong>AGCO Corporation</strong></td>
+<td>Duluth, GA</td>
+<td>Fuse Smart Farming, Fendt, Massey Ferguson, Precision Planting</td>
+<td>Via PTx Trimble JV, now has enhanced precision ag capabilities. AI and connectivity expansion.</td>
+</tr>
+<tr>
+<td><strong>Ag Leader Technology</strong></td>
+<td>Ames, IA</td>
+<td>SteerCommand Z2, InCommand displays, SMS Software</td>
+<td>Indie precision ag leader. Data-focused. Strong in yield monitoring, seed placement. Launched InCommand Go 16 (large display). RightPath implement steering coming.</td>
+</tr>
+<tr>
+<td><strong>FJD Dynamics</strong></td>
+<td>Shenzhen, China</td>
+<td>AT2, AT2 MAX, AS2 Steer Ready, AH2</td>
+<td><strong>Key disruptor.</strong> Affordable autosteer (sub-$10K systems). Sub-inch RTK accuracy. 12.1&rdquo; display. ISOBUS compatible. &ldquo;Premium features as standard.&rdquo;</td>
+</tr>
+<tr>
+<td><strong>CHCNAV</strong></td>
+<td>Shanghai, China</td>
+<td>NX610, NX612</td>
+<td>Chinese challenger. Multi-GNSS (GPS, Galileo, GLONASS, BDS, QZSS). ±2.5cm accuracy. Newer NX612 has 30.5cm screen. Growing dealer network in EU/NA.</td>
+</tr>
+<tr>
+<td><strong>SMAJAYU</strong></td>
+<td>China</td>
+<td>JY305 GPS guidance + autosteer</td>
+<td>Budget entry: available on Amazon. Multi-constellation GNSS. OTA updates. ~$3–5K systems.</td>
+</tr>
+<tr>
+<td><strong>Sveaverken</strong></td>
+<td>China (originally Swedish brand)</td>
+<td>F100 Auto-Steer System</td>
+<td>2.5cm RTK accuracy. Easy vehicle-to-vehicle transfer. Auto-switches to PPP (10cm) when RTK unavailable.</td>
+</tr>
+<tr>
+<td><strong>Hexagon / NovAtel</strong></td>
+<td>Calgary, Canada</td>
+<td>Ag guidance solutions, high-precision GNSS</td>
+<td>INS/GNSS positioning specialist. Higher-performance retrofit kits. Investing in autonomy partnerships in Brazil &amp; Europe.</td>
+</tr>
+<tr>
+<td><strong>Topcon Positioning</strong></td>
+<td>Livermore, CA</td>
+<td>Horizon, AES-35 autosteer</td>
+<td>Major global player in positioning. Strong in Japan and Asia-Pacific. Integration with autonomous systems.</td>
+</tr>
+<tr>
+<td><strong>Teejet Technologies</strong></td>
+<td>Wheaton, IL</td>
+<td>Unipilot Pro, A10 ISOBUS terminal</td>
+<td>Affordable ISOBUS-based steering. New A10 terminal + steering add-on at ~€10K. Legacy player transitioning to new platform.</td>
+</tr>
+<tr>
+<td><strong>Cerea GPS</strong></td>
+<td>Spain</td>
+<td>GPS guidance and autosteer kits</td>
+<td>Niche European player. ISOBUS VT, TC-BAS, TC-SC integration.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b-farm-management-software-saas">B. Farm Management Software / SaaS</h3>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>HQ</th>
+<th>Product</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Climate LLC (Bayer)</strong></td>
+<td>San Francisco, CA</td>
+<td>Climate FieldView</td>
+<td>Dominant digital ag platform. ML-driven yield prediction + pest/disease modeling (March 2025 update). Global reach. Bayer&rsquo;s $63B acquisition of Monsanto (2018) included Climate Corp.</td>
+</tr>
+<tr>
+<td><strong>Traction Ag</strong> (owns Granular + Conservis)</td>
+<td></td>
+<td>Traction, Conservis, Granular Business</td>
+<td><strong>Acquired both Granular (from Corteva) and Conservis.</strong> Advanced farm management for large multi-entity farms. Integrates with JD Operations Center &amp; Climate FieldView. Financial + operational management.</td>
+</tr>
+<tr>
+<td><strong>Bushel</strong></td>
+<td>Fargo, ND</td>
+<td>Bushel Farm, Bushel Network</td>
+<td>3,500+ grain/ag retail facilities connected. Financial management integrated. Integrates with JD Operations Center &amp; Climate FieldView.</td>
+</tr>
+<tr>
+<td><strong>Farmers Business Network (FBN)</strong></td>
+<td>San Carlos, CA</td>
+<td>FBN Platform</td>
+<td>117K+ member farms, 187M acres. AI-powered platform for commerce, financing, farm intelligence. Spun off Global Crop Solutions (Oct 2025). Raised $50M (Jul 2025). Backed by GV, Temasek, T Rowe Price.</td>
+</tr>
+<tr>
+<td><strong>John Deere</strong></td>
+<td>Moline, IL</td>
+<td>Operations Center</td>
+<td>500K+ connected farms. De facto standard for JD equipment owners. Integrates field data, machine data, agronomic insights.</td>
+</tr>
+<tr>
+<td><strong>Corteva Agriscience</strong></td>
+<td>Indianapolis, IN</td>
+<td>Digital agronomy tools (post-Granular sale)</td>
+<td>Divested Granular brand to Traction Ag. Still active in seed tech and digital agronomy. Corteva Catalyst VC investing in biologicals (LatAm focus).</td>
+</tr>
+<tr>
+<td><strong>TELUS Agriculture</strong></td>
+<td>Vancouver, Canada</td>
+<td>TELUS Ag &amp; Consumer Goods platform</td>
+<td>Data management and traceability. Profiles in multiple market reports as key player.</td>
+</tr>
+<tr>
+<td><strong>Agworld</strong></td>
+<td>Australia/US</td>
+<td>Agworld platform</td>
+<td>Farm planning, record keeping, recommendations. Focused on agronomist-grower workflow.</td>
+</tr>
+<tr>
+<td><strong>Trace Agtech</strong></td>
+<td>Calgary, Canada</td>
+<td>Trace platform</td>
+<td>Cropwise Operations competitor. Focus on traceability and compliance.</td>
+</tr>
+<tr>
+<td><strong>Traction Ag</strong></td>
+<td></td>
+<td>Traction platform</td>
+<td>Cloud-based accounting + field records. Climate FieldView &amp; JD Operations Center data imports.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="c-drone-aerial-gis">C. Drone / Aerial / GIS</h3>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>HQ</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DJI Agriculture</strong></td>
+<td>Shenzhen, China</td>
+<td>Global drone leader. AG spray drone dominant. <strong>Faces US government scrutiny</strong> over national security — uncertain US future.</td>
+</tr>
+<tr>
+<td><strong>Sentera</strong></td>
+<td>Minneapolis, MN</td>
+<td><strong>Acquired by John Deere (2025).</strong> Multispectral imaging + aerial scouting analytics. Now integrated into JD ecosystem.</td>
+</tr>
+<tr>
+<td><strong>DroneDeploy</strong></td>
+<td>San Francisco, CA</td>
+<td>Cloud-based drone mapping &amp; analytics platform. Multi-industry (ag + construction + energy).</td>
+</tr>
+<tr>
+<td><strong>XAG</strong></td>
+<td>Guangzhou, China</td>
+<td>Major ag drone company. Autonomous drones for spraying, seeding, surveying. Government-backed in China.</td>
+</tr>
+<tr>
+<td><strong>AgEagle Aerial Systems</strong></td>
+<td>Wichita, KS</td>
+<td>Drone sensors and analytics for crop monitoring.</td>
+</tr>
+<tr>
+<td><strong>Pix4D</strong></td>
+<td>Lausanne, Switzerland</td>
+<td>Photogrammetry software. Drone data → 2D/3D maps for precision ag analysis.</td>
+</tr>
+<tr>
+<td><strong>Parrot Drones</strong></td>
+<td>Paris, France</td>
+<td>Enterprise drones with multispectral imaging (SEQUOIA+).</td>
+</tr>
+<tr>
+<td><strong>PrecisionHawk</strong></td>
+<td>Raleigh, NC</td>
+<td>Drone data analytics for agriculture. Key US player.</td>
+</tr>
+<tr>
+<td><strong>Hylio</strong></td>
+<td>Houston, TX</td>
+<td>US-based spray drone manufacturer. Growing as DJI faces restrictions.</td>
+</tr>
+<tr>
+<td><strong>Autel Robotics</strong></td>
+<td>Shenzhen, China</td>
+<td>Enterprise drones with ag applications.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="d-ai-data-analytics-in-agriculture">D. AI / Data Analytics in Agriculture</h3>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>HQ</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Indigo Ag</strong></td>
+<td>Boston, MA</td>
+<td>Sustainability + carbon marketplace. Microbial crop protection. Digital agronomy tools.</td>
+</tr>
+<tr>
+<td><strong>CropX</strong></td>
+<td>Tel Aviv, Israel / US</td>
+<td>Soil intelligence platform. IoT sensors + analytics. Water/nutrient optimization.</td>
+</tr>
+<tr>
+<td><strong>Arable</strong></td>
+<td>Princeton, NJ</td>
+<td>Field-level weather + plant data sensors. &ldquo;Arable Mark&rdquo; IoT device. Crop intelligence platform.</td>
+</tr>
+<tr>
+<td><strong>Taranis</strong></td>
+<td>Tel Aviv, Israel</td>
+<td>AI-powered crop intelligence. Ultra-high-res aerial imagery. Leaf-level disease detection.</td>
+</tr>
+<tr>
+<td><strong>IntelinAir / AGMRI</strong></td>
+<td>Champaign, IL</td>
+<td>AI aerial imagery analytics. AGMRI platform for crop health monitoring.</td>
+</tr>
+<tr>
+<td><strong>Solinftec</strong></td>
+<td>São Paulo, Brazil</td>
+<td>AI-driven predictive analytics. Farm-to-market digital ops. Strong in Latin America.</td>
+</tr>
+<tr>
+<td><strong>Pivot Bio</strong></td>
+<td>Berkeley, CA</td>
+<td>Microbial nitrogen fixation. AI-designed biologicals.</td>
+</tr>
+<tr>
+<td><strong>Loam Bio</strong></td>
+<td>Sydney, Australia</td>
+<td>Fungal spores for soil health + carbon capture.</td>
+</tr>
+<tr>
+<td><strong>Farmonaut</strong></td>
+<td>India</td>
+<td>Affordable satellite-based crop monitoring. AI crop advisory.</td>
+</tr>
+<tr>
+<td><strong>Pixxel</strong></td>
+<td>Bengaluru, India</td>
+<td>Hyperspectral imaging satellites for environmental/ag monitoring.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="e-scouting-ipm-competitors-to-pinpoint">E. Scouting / IPM — Competitors to Pinpoint</h3>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Product</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FarmQA</strong></td>
+<td>FarmQA Scouting</td>
+<td>Mobile scouting app for agronomists. Task management + treatment recommendations. Positioned as ScoutPro alternative. Variable rate prescriptions.</td>
+</tr>
+<tr>
+<td><strong>Farm Dog</strong></td>
+<td>Farm Dog Scout</td>
+<td>IPM-focused mobile scouting. GPS logging, photos. Integrates with John Deere. Used by Costco, Walmart, McDonald&rsquo;s suppliers.</td>
+</tr>
+<tr>
+<td><strong>Farmable</strong></td>
+<td>Farmable platform</td>
+<td>Smartphone-based IPM scouting. AI-powered pest/disease tracking across seasons. Predictive analytics.</td>
+</tr>
+<tr>
+<td><strong>ecoation</strong></td>
+<td>ecoation IPM</td>
+<td>AI-driven yield + IPM forecasting for greenhouse growers. Most comprehensive greenhouse IPM platform.</td>
+</tr>
+<tr>
+<td><strong>ScoutPro</strong></td>
+<td>ScoutPro app</td>
+<td>Legacy scouting tool for consultants. iPad-only. Identification + reporting.</td>
+</tr>
+<tr>
+<td><strong>Natutec Scout (Koppert)</strong></td>
+<td>Natutec Scout</td>
+<td>Pest management from identification to treatment recommendations. Koppert (biological control leader) product.</td>
+</tr>
+<tr>
+<td><strong>AgraScout (Neucadia)</strong></td>
+<td>AgraScout app</td>
+<td>GPS-based scouting. Drop pins for issues, photos, reports. Simple &amp; affordable.</td>
+</tr>
+<tr>
+<td><strong>DTN Scout</strong></td>
+<td>DTN Scout</td>
+<td>Photo library with thousands of pest images. 300+ crop pest IDs. Integrates with GIS/SST systems.</td>
+</tr>
+<tr>
+<td><strong>AgriSite IPM</strong></td>
+<td>AgriSite IPM</td>
+<td>Scout → agronomist → producer workflow. Geo-referenced field observations.</td>
+</tr>
+<tr>
+<td><strong>OneSoil Scouting</strong></td>
+<td>OneSoil app</td>
+<td>Satellite-based field health maps + offline mobile scouting. Free tier available.</td>
+</tr>
+<tr>
+<td><strong>Trimble Ag Mobile</strong></td>
+<td>Trimble Ag Mobile</td>
+<td>Scouting, crop health imagery, fleet management. Part of broader Trimble ecosystem.</td>
+</tr>
+<tr>
+<td><strong>Climate FieldView</strong></td>
+<td>FieldView scouting</td>
+<td>Built-in scouting tools within FieldView digital platform.</td>
+</tr>
+<tr>
+<td><strong>Plantix</strong></td>
+<td>Plantix app</td>
+<td>AI photo-based disease/pest ID. Very popular with smallholders globally.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-winning-strategies-how-leaders-are-positioning">3. Winning Strategies — How Leaders Are Positioning</h2>
+<h3 id="31-vertical-integration-hardware-software">3.1 Vertical Integration (Hardware + Software)</h3>
+<ul>
+<li><strong>John Deere:</strong> The gold standard. Owns machines, guidance, autonomy, Operations Center software, and now aerial scouting (Sentera). End-to-end farmer experience.</li>
+<li><strong>PTx Trimble / AGCO:</strong> Created JV specifically to combine hardware (AGCO equipment) with Trimble&rsquo;s precision ag technology. Factory-fit + retrofit for mixed fleets.</li>
+<li><strong>CNH Industrial:</strong> Acquired Raven Industries ($2.1B, 2021) to bolt on autonomy and autosteer to Case IH/New Holland platforms.</li>
+</ul>
+<h3 id="32-data-moats">3.2 Data Moats</h3>
+<ul>
+<li><strong>John Deere Operations Center:</strong> 500K+ farms. Machine telemetry + agronomic data creates massive switching costs.</li>
+<li><strong>Climate FieldView (Bayer):</strong> Dominant digital platform. Field-level data accumulation over years makes it sticky.</li>
+<li><strong>FBN:</strong> 117K member farms, 187M acres of agronomic data. Network effects create value.</li>
+<li><strong>Bushel:</strong> 3,500+ grain facilities = transaction data moat.</li>
+</ul>
+<h3 id="33-distribution-dealer-networks">3.3 Distribution / Dealer Networks</h3>
+<ul>
+<li><strong>John Deere:</strong> 4,000+ dealer locations globally. Dealers are the primary sales channel for precision ag tech.</li>
+<li><strong>AGCO:</strong> ~3,150 dealer/distributor locations worldwide.</li>
+<li><strong>CNH Industrial:</strong> ~3,600 dealer locations globally.</li>
+<li><strong>Key insight:</strong> Dealer networks are the <strong>#1 distribution advantage</strong> in ag tech. Startups without dealer relationships struggle to reach farmers.</li>
+</ul>
+<h3 id="34-ai-autonomy-bets">3.4 AI / Autonomy Bets</h3>
+<ul>
+<li><strong>John Deere:</strong> Autonomous tractors (CES 2025), autonomous orchard tractors, AI-based sensors. Second-gen autonomy stack with vision + AI + remote diagnostics. The Reservoir partnership for ag robotics.</li>
+<li><strong>CNH/Raven:</strong> Autonomous technology integrated post-acquisition.</li>
+<li><strong>Carbon Robotics:</strong> AI-powered laser weeding. $70M Series D (Oct 2024).</li>
+<li><strong>Ecorobotix:</strong> AI-powered crop protection. $150M raise (Oct 2025).</li>
+<li><strong>Bonsai Robotics:</strong> Acquired Farm-ng (Jul 2025) for modular robotic platforms.</li>
+<li><strong>Emerging trend:</strong> &ldquo;Physical AI&rdquo; — companies building ML into chips/systems for ag robots, enabled by Nvidia/Oracle/AMD platform technologies.</li>
+</ul>
+<h3 id="35-affordable-disruption-chinese-manufacturers">3.5 Affordable Disruption (Chinese Manufacturers)</h3>
+<ul>
+<li><strong>FJD Dynamics, CHCNAV, SMAJAYU, Sveaverken:</strong> Driving autosteer costs down dramatically.</li>
+<li>Incumbents like Ag Leader and Teejet openly acknowledge they &ldquo;cannot compete&rdquo; on price with Chinese systems.</li>
+<li>Chinese manufacturers include premium features as standard; incumbent systems charge extra for features like advanced turn patterns.</li>
+<li><strong>This is the biggest market disruption in precision ag hardware.</strong></li>
+</ul>
+<hr />
+<h2 id="4-geographic-distribution-where-are-ag-tech-companies">4. Geographic Distribution — Where Are Ag Tech Companies?</h2>
+<h3 id="major-ag-tech-hubs">Major Ag Tech Hubs</h3>
+<p><strong>Silicon Valley / Bay Area (CA)</strong>
+- Climate Corp (Bayer), DroneDeploy, FBN (San Carlos), Pivot Bio (Berkeley), Plenty (defunct)
+- Home to tech-driven ag companies focusing on AI, robotics, data analytics
+- Challenge: disconnected from farming reality; high costs
+- <strong>~26% of global ag startup activity</strong> historically concentrated in top 5 hubs (SV, London, NYC, Boston, LA)</p>
+<p><strong>St. Louis, MO — &ldquo;Silicon Valley of Ag Tech&rdquo;</strong>
+- Danforth Plant Science Center, BioSTL, Yield Lab Institute
+- Deep collaboration between startups and ag researchers
+- Historical home of Monsanto (now Bayer Crop Science)
+- Lewis &amp; Clark Ventures: $25M ag tech fund + $78M main fund</p>
+<p><strong>Midwest / Corn Belt</strong>
+- Ag Leader Technology (Ames, IA), IntelinAir (Champaign, IL)
+- Granular (Corteva) had Midwest regional HQ at U of I Research Park (Champaign)
+- AgriNovus Indiana promoting Midwest ag tech
+- <strong>Proximity to customers is the key advantage</strong></p>
+<p><strong>Salinas, CA — &ldquo;Salad Bowl of the World&rdquo;</strong>
+- Emerging ag tech hub backed by The Reservoir (John Deere partner)
+- Focus on specialty crops, robotics, field testing
+- Reservoir Farms facility (accelerator + testing)</p>
+<p><strong>Colorado</strong>
+- <strong>2nd largest ag tech ecosystem</strong> in US (tied with NY, behind Silicon Valley) — 73+ startups
+- PTx Trimble (Westminster), Agribotix (Boulder)
+- Strong university research + outdoor/ag culture</p>
+<p><strong>Fargo, ND</strong>
+- Bushel HQ — heartland of grain tech
+- Close to farming operations</p>
+<p><strong>International Hubs</strong>
+- <strong>Tel Aviv, Israel:</strong> CropX, Taranis — strong in IoT/AI/sensors
+- <strong>China:</strong> FJD Dynamics, CHCNAV, DJI, XAG — dominant in affordable hardware + drones
+- <strong>Brazil/LatAm:</strong> Solinftec — largest biologicals market; major growth region
+- <strong>Australia:</strong> Loam Bio, SwarmFarm Robotics, AgriWebb
+- <strong>Amsterdam/Netherlands:</strong> CHCNAV EU distribution (GriTech)</p>
+<h3 id="key-takeaway-on-geography">Key Takeaway on Geography</h3>
+<p><strong>Ag tech is NOT concentrated in Silicon Valley.</strong> The industry is spreading to the Midwest, and the most impactful hardware disruption is coming from <strong>China</strong> (Shenzhen, Shanghai). Silicon Valley companies tend to build software/AI platforms; hardware leadership is moving to China and the Midwest.</p>
+<hr />
+<h2 id="5-opportunity-gaps-where-incumbents-are-failing">5. Opportunity Gaps — Where Incumbents Are Failing</h2>
+<h3 id="gap-1-affordable-autosteer-the-fjd-disruption">Gap 1: Affordable Autosteer — The FJD Disruption</h3>
+<ul>
+<li><strong>John Deere AutoTrac:</strong> $15,000–$25,000+ installed (often requires Deere-specific equipment)</li>
+<li><strong>Trimble Autopilot:</strong> $10,000–$20,000+ (retrofit)</li>
+<li><strong>FJD Dynamics AT2:</strong> ~$5,000–$8,000 (comparable RTK accuracy)</li>
+<li><strong>SMAJAYU:</strong> ~$3,000–$5,000 (Amazon-available, budget tier)</li>
+<li><strong>Gap:</strong> Incumbents charge 2–5x more for comparable accuracy. Chinese systems include features (advanced turns, ISOBUS) as standard that incumbents charge extra for.</li>
+<li><strong>ELL opportunity:</strong> Become a <strong>dealer/distributor</strong> for affordable autosteer systems (FJD, CHCNAV) to underserved mid-size farms. Or build integration software that bridges affordable hardware with premium farm management.</li>
+</ul>
+<h3 id="gap-2-mobile-first-scouting">Gap 2: Mobile-First Scouting</h3>
+<ul>
+<li>Most scouting apps are either <strong>iPad-only</strong> (ScoutPro), <strong>legacy web-first</strong> (AgriSite), or <strong>part of bloated enterprise platforms</strong> (Climate FieldView, Trimble Ag Mobile).</li>
+<li>No dominant mobile-first scouting platform exists that combines:</li>
+<li>AI-powered pest/disease ID (like Plantix but for professional growers)</li>
+<li>Agronomist-grower workflow (like FarmQA but more modern)</li>
+<li>Offline-first with seamless sync</li>
+<li>Integration with cheap hardware sensors</li>
+<li><strong>Farm Dog</strong> is closest but focused on supply chain (Costco, Walmart suppliers)</li>
+<li><strong>ELL/Pinpoint opportunity:</strong> Build the <strong>Slack of field scouting</strong> — mobile-first, AI-enhanced, designed for agronomist-grower teams, with cranberry/specialty crop expertise.</li>
+</ul>
+<h3 id="gap-3-ai-powered-farm-management">Gap 3: AI-Powered Farm Management</h3>
+<ul>
+<li><strong>Current state:</strong> Most FMS platforms are essentially <strong>digital record-keeping</strong> with some analytics bolted on.</li>
+<li><strong>The AI gap:</strong> No platform truly delivers:</li>
+<li>Predictive yield forecasting based on real-time field data + historical patterns</li>
+<li>Automated variable-rate prescriptions from scouting data</li>
+<li>AI-generated spray/input recommendations based on live pest pressure + weather</li>
+<li>Natural language query of farm data (&ldquo;What was my yield on the north bog last year?&rdquo;)</li>
+<li><strong>Climate FieldView</strong> added ML yield prediction (March 2025) but it&rsquo;s still Bayer&rsquo;s walled garden</li>
+<li><strong>FBN</strong> is building toward AI farm intelligence but is commerce/marketplace focused</li>
+<li><strong>ELL opportunity:</strong> AI-native farm management for specialty crops (cranberry, blueberry, orchards) that incumbents ignore. Underserved segment.</li>
+</ul>
+<h3 id="gap-4-fragmented-tech-stack">Gap 4: Fragmented Tech Stack</h3>
+<ul>
+<li>Farmers use 3–7+ different apps/platforms that don&rsquo;t talk to each other</li>
+<li>No single platform integrates: autosteer data + scouting + FMS + drone imagery + accounting</li>
+<li><strong>&ldquo;One source of truth&rdquo; is the holy grail</strong> — mentioned repeatedly in industry reports</li>
+<li><strong>ELL opportunity:</strong> Integration layer / middleware that connects affordable hardware (FJD) with multiple software platforms. API-first approach.</li>
+</ul>
+<h3 id="gap-5-specialty-crop-neglect">Gap 5: Specialty Crop Neglect</h3>
+<ul>
+<li>Most precision ag is built for <strong>broad-acre row crops</strong> (corn, soy, wheat)</li>
+<li>Specialty crops (cranberry, berry, orchard, vineyard, vegetables) are underserved:</li>
+<li>Different equipment needs</li>
+<li>Different pest/disease profiles</li>
+<li>Different economics (higher value per acre, more labor-intensive)</li>
+<li>Different growing environments (bogs, trellises, greenhouses)</li>
+<li><strong>John Deere is only starting</strong> to address this (The Reservoir partnership for specialty crops, acquisition of GUSS for orchards)</li>
+<li><strong>ELL opportunity:</strong> Deep specialty crop expertise is a defensible moat. Build for cranberry first, expand to similar high-value crops.</li>
+</ul>
+<h3 id="gap-6-dealer-network-disruption">Gap 6: Dealer Network Disruption</h3>
+<ul>
+<li>Traditional equipment dealers are <strong>slow to adopt</strong> new technology from non-OEM sources</li>
+<li>Many farmers discover FJD, CHCNAV on YouTube/Reddit, not from dealers</li>
+<li>There&rsquo;s no <strong>independent precision ag dealer network</strong> analogous to what FBN did for inputs</li>
+<li><strong>ELL opportunity:</strong> Build or join a dealer/distribution channel for independent precision ag tech. Become the trusted advisor for mixed-fleet farmers seeking affordable, integrated solutions.</li>
+</ul>
+<h3 id="gap-7-financing-innovation">Gap 7: Financing Innovation</h3>
+<ul>
+<li>Upfront costs remain the #1 barrier to precision ag adoption</li>
+<li>Equipment-as-a-service, outcome-based pricing, and carbon-linked incentives are <strong>just emerging</strong></li>
+<li>Most small/mid-size farms can&rsquo;t justify $15K–$25K for autosteer</li>
+<li><strong>ELL opportunity:</strong> Offer affordable systems ($5K–$8K) with financing, leasing, or subscription models. Make the ROI case simple.</li>
+</ul>
+<hr />
+<h2 id="6-key-takeaways">6. Key Takeaways</h2>
+<h3 id="the-landscape-in-one-sentence">The Landscape in One Sentence</h3>
+<p><strong>John Deere is building a vertically-integrated monopoly, Chinese manufacturers are democratizing hardware access, and there&rsquo;s a massive gap in affordable, AI-native, specialty-crop-focused farm management that nobody is filling.</strong></p>
+<h3 id="for-ell-specifically">For ELL Specifically:</h3>
+<ol>
+<li>
+<p><strong>The autosteer market is ripe for disruption.</strong> FJD and CHCNAV have proven that $5–8K systems can match $15–25K incumbents on accuracy. The distribution channel for these affordable systems is still nascent in North America. ELL could be a trusted dealer/integrator.</p>
+</li>
+<li>
+<p><strong>Scouting + IPM is fragmented and ripe for consolidation.</strong> No dominant mobile-first platform exists. Pinpoint could be positioned as the category winner if it moves fast with AI features.</p>
+</li>
+<li>
+<p><strong>Specialty crops are underserved.</strong> All the big players are building for corn/soy. Cranberry, berry, orchard, vineyard farmers are an afterthought. This is ELL&rsquo;s natural moat.</p>
+</li>
+<li>
+<p><strong>AI is the connective tissue.</strong> The winning platforms in 2026-2030 will use AI to turn fragmented farm data into actionable intelligence. The technology is ready (LLMs, vision models, predictive analytics); the ag-specific applications are nascent.</p>
+</li>
+<li>
+<p><strong>Dealer networks matter more than tech.</strong> Distribution is the #1 competitive advantage in ag. ELL&rsquo;s existing relationships with cranberry/specialty crop growers could be leveraged.</p>
+</li>
+<li>
+<p><strong>The venture market is cooling but not dead.</strong> $4.8B in ag tech VC in 2025. Investors want AI + proven traction. Pre-seed companies with tested prototypes are the new normal.</p>
+</li>
+<li>
+<p><strong>China is the wildcard.</strong> Chinese ag tech (hardware + drones + autonomous systems) is advancing rapidly with government backing. US incumbents are making &ldquo;defensive M&amp;A&rdquo; in response. This creates both opportunities (disruption) and risks (geopolitics, DJI-style restrictions).</p>
+</li>
+</ol>
+<hr />
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Spherical Insights: Top 20 Precision Agriculture Companies, Jul 2025</li>
+<li>Precedence Research: Smart Agriculture Market 2025-2034</li>
+<li>Exploding Topics: Global AgTech Market Size, Nov 2024</li>
+<li>AgTechNavigator: State of VC in Agtech, Jan 2026</li>
+<li>AgFunderNews: A Look Back at Agtech in 2025, Dec 2025</li>
+<li>ICL Group: Top 5 AgTech Innovations 2026, Dec 2025</li>
+<li>Future Farming: Autosteer Retrofit Kits Market, Mar 2025</li>
+<li>MarketsandMarkets: Precision Farming Market 2025-2032</li>
+<li>Grand View Research: Farm Management Software Market 2030</li>
+<li>Mordor Intelligence: Precision Farming Market 2030</li>
+<li>Straits Research: Farm Management Software Market 2033</li>
+<li>Various company websites, press releases, Reddit discussions</li>
+</ul>
+<hr />
+<p><em>Report compiled February 14, 2026</em></p>
+</div>
+
+</body>
+</html>

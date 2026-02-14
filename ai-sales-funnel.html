@@ -1,0 +1,2692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Sales Funnel Design</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap');
+
+@page {
+    size: letter;
+    margin: 2.5cm 2.5cm 3cm 2.5cm;
+    @bottom-center {
+        content: counter(page);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 9pt;
+        color: #6b7280;
+    }
+    @bottom-right {
+        content: "Elm Lake Labs";
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 8pt;
+        color: #9ca3af;
+    }
+}
+
+@page :first {
+    margin: 0;
+    @bottom-center { content: none; }
+    @bottom-right { content: none; }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+    font-size: 10.5pt;
+    line-height: 1.7;
+    color: #1f2937;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Cover Page */
+.cover-page {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 3cm;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+    color: white;
+    text-align: center;
+}
+
+.cover-logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 14pt;
+    font-weight: 300;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 3cm;
+}
+
+.cover-title {
+    font-family: 'Merriweather', Georgia, serif;
+    font-size: 28pt;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.8cm;
+    color: white;
+    max-width: 18cm;
+}
+
+.cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 12pt;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 3cm;
+    max-width: 14cm;
+}
+
+.cover-divider {
+    width: 4cm;
+    height: 2px;
+    background: rgba(255,255,255,0.3);
+    margin: 0 auto 1.5cm auto;
+}
+
+.cover-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 10pt;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.8;
+}
+
+.cover-meta strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+}
+
+/* Table of Contents */
+.toc-page {
+    page-break-after: always;
+    padding-top: 1cm;
+}
+
+.toc-page h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 18pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1cm;
+    padding-bottom: 0.3cm;
+    border-bottom: 3px solid #1e3a5f;
+}
+
+.toc-list {
+    list-style: none;
+    padding: 0;
+}
+
+.toc-list li {
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    padding: 0.3cm 0;
+    border-bottom: 1px solid #e5e7eb;
+    color: #1e3a5f;
+    font-weight: 500;
+}
+
+.toc-list li:last-child {
+    border-bottom: none;
+}
+
+.toc-list .toc-sub {
+    padding-left: 1.5cm;
+    font-size: 10pt;
+    font-weight: 400;
+    color: #4b5563;
+}
+
+/* Content Headings */
+h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 22pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 1.5cm;
+    margin-bottom: 0.5cm;
+    page-break-before: always;
+    padding-bottom: 0.3cm;
+    border-bottom: 3px solid #1e3a5f;
+}
+
+h1:first-of-type {
+    page-break-before: auto;
+}
+
+h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 16pt;
+    font-weight: 600;
+    color: #1e3a5f;
+    margin-top: 1cm;
+    margin-bottom: 0.4cm;
+    padding-bottom: 0.2cm;
+    border-bottom: 1px solid #d1d5db;
+}
+
+h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 13pt;
+    font-weight: 600;
+    color: #374151;
+    margin-top: 0.7cm;
+    margin-bottom: 0.3cm;
+}
+
+h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    font-weight: 600;
+    color: #4b5563;
+    margin-top: 0.5cm;
+    margin-bottom: 0.2cm;
+}
+
+/* Paragraphs */
+p {
+    margin-bottom: 0.4cm;
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* Lists */
+ul, ol {
+    margin-bottom: 0.4cm;
+    padding-left: 1cm;
+}
+
+li {
+    margin-bottom: 0.15cm;
+}
+
+li > ul, li > ol {
+    margin-top: 0.1cm;
+    margin-bottom: 0.1cm;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.5cm 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 9pt;
+    line-height: 1.4;
+    page-break-inside: avoid;
+}
+
+thead {
+    background: #0f172a;
+    color: white;
+}
+
+th {
+    padding: 0.25cm 0.3cm;
+    text-align: left;
+    font-weight: 600;
+    font-size: 8.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 0.2cm 0.3cm;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: top;
+}
+
+tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+tr:hover {
+    background: #f3f4f6;
+}
+
+/* Code blocks */
+pre {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #1e3a5f;
+    padding: 0.4cm;
+    margin: 0.4cm 0;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 8.5pt;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    page-break-inside: avoid;
+}
+
+code {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 9pt;
+    background: #f1f5f9;
+    padding: 0.05cm 0.15cm;
+    border-radius: 3px;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 4px solid #1e3a5f;
+    padding: 0.3cm 0.6cm;
+    margin: 0.5cm 0;
+    background: #f8fafc;
+    font-style: italic;
+    color: #374151;
+}
+
+blockquote p {
+    margin-bottom: 0.2cm;
+}
+
+/* Strong/Bold */
+strong {
+    font-weight: 700;
+    color: #111827;
+}
+
+/* Horizontal Rule */
+hr {
+    border: none;
+    border-top: 1px solid #d1d5db;
+    margin: 0.8cm 0;
+}
+
+/* Links */
+a {
+    color: #1e3a5f;
+    text-decoration: none;
+}
+
+/* Section break helper */
+.section-break {
+    page-break-before: always;
+}
+
+/* Emoji handling */
+.emoji {
+    font-style: normal;
+}
+
+/* Print adjustments */
+@media print {
+    body { font-size: 10pt; }
+    h1 { font-size: 20pt; }
+    h2 { font-size: 14pt; }
+    h3 { font-size: 12pt; }
+    table { font-size: 8pt; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Cover Page -->
+<div class="cover-page">
+    <div class="cover-logo">Elm Lake Labs</div>
+    <h1 class="cover-title">AI Sales Funnel Design</h1>
+    <p class="cover-subtitle">A complete playbook for selling FJD Dynamics precision ag products through an AI-powered online sales funnel</p>
+    <div class="cover-divider"></div>
+    <div class="cover-meta">
+        <strong>Prepared for</strong> Elm Lake Labs<br>
+        <strong>Date</strong> February 14, 2026<br>
+        <strong>Prepared by</strong> Henry Clawson
+    </div>
+</div>
+
+<!-- Table of Contents -->
+<div class="toc-page">
+<h2>Table of Contents</h2>
+<ul class="toc-list">
+<li>A Complete Playbook for Elm Lake Labs</li>
+<li>1. Executive Summary</li>
+<li class="toc-sub">The Opportunity</li>
+<li class="toc-sub">The Problem</li>
+<li class="toc-sub">The Solution</li>
+<li class="toc-sub">Expected Outcomes (12-Month Projection)</li>
+<li class="toc-sub">Key Differentiators vs. Competitors</li>
+<li>2. Market Analysis</li>
+<li class="toc-sub">2.1 How Farmers Currently Buy Autosteer</li>
+<li class="toc-sub">2.2 How Precision Ag Dealers Sell Online Today</li>
+<li class="toc-sub">2.3 The Gap: Nobody Answers &quot;Will This Fit MY Tractor?&quot; Instantly</li>
+<li>3. Funnel Architecture: The &quot;Confidence Engine&quot;</li>
+<li class="toc-sub">Overview</li>
+<li class="toc-sub">Stage 1 — Awareness: Content Strategy</li>
+<li class="toc-sub">Stage 2 — Engagement: Tractor Compatibility Tool</li>
+<li class="toc-sub">Stage 3 — Qualification: AI Chatbot</li>
+<li class="toc-sub">Stage 4 — Conversion: Purchase Flow</li>
+<li class="toc-sub">Stage 5 — Post-Sale: Retention &amp; Referral</li>
+<li>4. Recommended Tool Stack (with Pricing)</li>
+<li class="toc-sub">Complete Stack — Estimated Monthly Cost: $400-$1,200/month</li>
+<li>5. Content That Converts Farmers</li>
+<li class="toc-sub">5.1 ROI Calculator Specification</li>
+<li class="toc-sub">5.2 Comparison Charts</li>
+<li class="toc-sub">5.3 Video Content Strategy</li>
+<li class="toc-sub">5.4 Blog/SEO Content Calendar (12 Months)</li>
+<li>6. Budget &amp; Timeline</li>
+<li class="toc-sub">Phase 1: MVP Funnel (Months 1-2)</li>
+<li class="toc-sub">Phase 2: AI Chatbot &amp; Scale (Months 3-4)</li>
+<li class="toc-sub">Phase 3: Optimization &amp; Scale (Months 5-6)</li>
+<li class="toc-sub">6-Month Budget Summary</li>
+<li>7. KPIs &amp; Metrics</li>
+<li class="toc-sub">Funnel Metrics by Stage</li>
+<li class="toc-sub">Benchmarks for Ag E-Commerce</li>
+<li class="toc-sub">Reporting Cadence</li>
+<li>Appendix A: Quick-Start Checklist</li>
+<li class="toc-sub">Week 1</li>
+<li class="toc-sub">Week 2</li>
+<li class="toc-sub">Week 3</li>
+<li class="toc-sub">Week 4</li>
+<li class="toc-sub">Month 2</li>
+<li>Appendix B: Competitive Intelligence — Ongoing Monitoring</li>
+</ul>
+</div>
+
+
+<!-- Report Content -->
+<div class="content">
+<h2 id="a-complete-playbook-for-elm-lake-labs">A Complete Playbook for Elm Lake Labs</h2>
+<p><strong>Prepared:</strong> February 2026
+<strong>Version:</strong> 2.0
+<strong>Author:</strong> Henry (AI Executive Assistant)
+<strong>For:</strong> John Moss, Elm Lake Labs</p>
+<hr />
+<h2 id="1-executive-summary">1. Executive Summary</h2>
+<h3 id="the-opportunity">The Opportunity</h3>
+<p>Aftermarket autosteer is a $2B+ global market growing at 12-15% annually, driven by aging farm operators, labor shortages, and the ROI math of precision agriculture. The dominant OEM players (John Deere StarFire, Trimble, Raven) sell systems at $15,000–$40,000 and lock farmers into proprietary ecosystems with recurring subscription fees. FJD Dynamics offers comparable 2.5cm RTK accuracy at $5,000–$8,000 — a 60-75% cost reduction — but the brand is still relatively unknown in North America.</p>
+<h3 id="the-problem">The Problem</h3>
+<p>Today, a farmer who hears about FJD has no clear path from &ldquo;curious&rdquo; to &ldquo;confident buyer.&rdquo; The existing online landscape is fragmented: FJD&rsquo;s own website redirects between consumer (robotic mowers) and ag products; third-party dealers like Emerald Bay Ag Dynamics list the product on basic Squarespace stores with minimal guidance; and farmers&rsquo; #1 question — <strong>&ldquo;Will this fit MY tractor?&rdquo;</strong> — goes unanswered until they call someone.</p>
+<h3 id="the-solution">The Solution</h3>
+<p>Build an AI-powered sales funnel — the <strong>&ldquo;Confidence Engine&rdquo;</strong> — that moves a farmer from awareness to purchase by systematically eliminating technical doubt. The funnel&rsquo;s centerpiece is a <strong>Tractor Compatibility Tool</strong> backed by an <strong>AI chatbot</strong> trained on FJD&rsquo;s full technical documentation. This isn&rsquo;t a standard e-commerce site. It&rsquo;s a guided buying experience that replaces the dealer visit.</p>
+<h3 id="expected-outcomes-12-month-projection">Expected Outcomes (12-Month Projection)</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Conservative</th>
+<th>Optimistic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Monthly site visitors</td>
+<td>5,000</td>
+<td>15,000</td>
+</tr>
+<tr>
+<td>Compatibility tool completions/month</td>
+<td>500</td>
+<td>2,000</td>
+</tr>
+<tr>
+<td>Qualified leads/month</td>
+<td>100</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Monthly units sold</td>
+<td>15</td>
+<td>50</td>
+</tr>
+<tr>
+<td>Monthly revenue</td>
+<td>$90,000</td>
+<td>$350,000</td>
+</tr>
+<tr>
+<td>Customer acquisition cost</td>
+<td>$150–$300</td>
+<td>$75–$150</td>
+</tr>
+<tr>
+<td>Blended gross margin</td>
+<td>25–30%</td>
+<td>30–35%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-differentiators-vs-competitors">Key Differentiators vs. Competitors</h3>
+<ol>
+<li><strong>Instant compatibility confirmation</strong> — no other aftermarket dealer provides this online</li>
+<li><strong>AI-powered technical sales</strong> — available 24/7, answers complex questions with citations</li>
+<li><strong>&ldquo;Guaranteed to Fit&rdquo; offer</strong> — eliminates purchase risk entirely</li>
+<li><strong>White-glove pre-configuration</strong> — tablet arrives ready to use, not boxed in parts</li>
+<li><strong>RTK network bundling</strong> — one purchase, everything you need to get sub-inch accuracy</li>
+</ol>
+<hr />
+<h2 id="2-market-analysis">2. Market Analysis</h2>
+<h3 id="21-how-farmers-currently-buy-autosteer">2.1 How Farmers Currently Buy Autosteer</h3>
+<p>Understanding the farmer&rsquo;s buying journey is critical. It looks nothing like a typical e-commerce funnel:</p>
+<p><strong>Discovery Phase (3-12 months before purchase)</strong>
+- <strong>Word of mouth:</strong> The #1 driver. A farmer sees a neighbor&rsquo;s tractor driving itself, asks about it at the co-op or the elevator. &ldquo;What system you running?&rdquo; is worth more than any ad.
+- <strong>YouTube:</strong> Farmers are voracious YouTube consumers. Channels like Welker Farms, Millennial Farmer, and How Farms Work drive awareness. &ldquo;Autosteer install&rdquo; and &ldquo;GPS guidance review&rdquo; videos routinely get 50K–500K views.
+- <strong>Farm shows:</strong> Commodity Classic, Farm Progress Show, local field days. Farmers trust what they can see and touch.
+- <strong>Facebook groups:</strong> &ldquo;Precision Ag &amp; GPS&rdquo; groups (50K+ members), brand-specific groups, regional farmer groups. This is where farmers ask real questions and get unfiltered answers.
+- <strong>Reddit:</strong> r/farming (200K+), r/precisionag — increasingly important for younger operators.</p>
+<p><strong>Research Phase (1-3 months)</strong>
+- <strong>Google searches:</strong> &ldquo;aftermarket autosteer,&rdquo; &ldquo;FJD vs Trimble,&rdquo; &ldquo;cheapest RTK autosteer,&rdquo; &ldquo;autosteer for [tractor model]&rdquo;
+- <strong>Dealer visits:</strong> Farmers call or visit their local precision ag dealer. The dealer relationship is paramount.
+- <strong>Forum deep dives:</strong> Allischalmers.com, TractorByNet, The Combine Forum, r/farming. Farmers read <em>every</em> reply in a thread before forming an opinion.</p>
+<p><strong>Decision Phase (1-4 weeks)</strong>
+- <strong>Price comparison:</strong> Aftermarket buyers are price-conscious by definition — they&rsquo;ve already rejected OEM pricing.
+- <strong>Compatibility confirmation:</strong> The farmer needs to know it will work on <em>their specific</em> tractor before spending $5K+.
+- <strong>Installation confidence:</strong> Can they self-install? What tools do they need? How long does it take?
+- <strong>Support availability:</strong> If something goes wrong at 10 PM during planting season, who picks up the phone?</p>
+<h3 id="22-how-precision-ag-dealers-sell-online-today">2.2 How Precision Ag Dealers Sell Online Today</h3>
+<p>We analyzed five representative online dealers to identify patterns and gaps:</p>
+<p><strong>Dealer 1: Emerald Bay Ag Dynamics (emeraldbayagdynamics.squarespace.com)</strong>
+- Platform: Squarespace
+- Products: FJD AT2 ($9,995 CAD), accessories
+- Strengths: Clean layout, transparent pricing, product images
+- Weaknesses: No compatibility tool, no chat support, no installation guidance, minimal content, no lead capture, generic product descriptions copied from FJD
+- Verdict: A product listing, not a sales experience</p>
+<p><strong>Dealer 2: Global GPS Systems (globalgpssystems.com)</strong>
+- Platform: WordPress/WooCommerce
+- Products: FJD, survey equipment, machine control
+- Strengths: Claims &ldquo;lowest price online,&rdquo; next-day delivery, free shipping
+- Weaknesses: Pricing hidden behind login wall, no compatibility guidance, no technical content, broad product focus dilutes ag messaging
+- Verdict: Wholesale-oriented, not farmer-friendly</p>
+<p><strong>Dealer 3: AgriSpray Drones (agrispraydrones.com)</strong>
+- Platform: Custom site
+- Products: HD408 AutoSteer (budget segment), drone sprayers
+- Strengths: Clear &ldquo;easy to install&rdquo; messaging, budget positioning, video demos
+- Weaknesses: Limited to one autosteer product, no compatibility database, no AI/chat, thin content
+- Verdict: Good messaging for budget buyers, but no depth</p>
+<p><strong>Dealer 4: FJD Direct Store (store.fjdynamics.com / us.fjdynamics.com)</strong>
+- Platform: Shopify (redirected from original store)
+- Products: Full FJD lineup (AT1, AT2, AT2 Max, AL01, accessories)
+- Strengths: Official brand authority, full product range, includes warranty/shipping
+- Weaknesses: Website now redirects to consumer products (robotic mowers) — ag products are buried. No compatibility tool, no chat, no installation support content, confusing navigation between ag and consumer divisions
+- Verdict: Brand authority undermined by terrible UX and consumer product pivot</p>
+<p><strong>Dealer 5: Precision Ag Reviews (precisionagreviews.com)</strong>
+- Platform: Review/comparison site (not a dealer)
+- Products: Reviews of FJD, Trimble, AgOpenGPS, Topcon, Outback
+- Strengths: Honest reviews, comparison content, community trust
+- Weaknesses: Not transactional — they review but don&rsquo;t sell
+- Verdict: Proves demand for comparison content; opportunity to own this space while also selling</p>
+<h3 id="23-the-gap-nobody-answers-will-this-fit-my-tractor-instantly">2.3 The Gap: Nobody Answers &ldquo;Will This Fit MY Tractor?&rdquo; Instantly</h3>
+<p>This is the single biggest friction point in the entire aftermarket autosteer market. Here&rsquo;s what happens today:</p>
+<ol>
+<li>Farmer Googles &ldquo;autosteer for John Deere 7810&rdquo;</li>
+<li>Gets generic product pages that say &ldquo;compatible with a wide range of agricultural machinery&rdquo;</li>
+<li>Can&rsquo;t find a definitive yes/no answer for their specific tractor</li>
+<li>Calls a dealer (if they can find one). Leaves a voicemail. Waits 1-3 days.</li>
+<li>Maybe gets an answer. Maybe gets bounced to another dealer or to FJD directly.</li>
+<li>Frustration builds. Some farmers give up. Some go back to Deere/Trimble because at least the compatibility is guaranteed.</li>
+</ol>
+<p><strong>The farmer&rsquo;s internal monologue:</strong> &ldquo;I&rsquo;m not spending $6,000 on something that MIGHT work. I need to KNOW it&rsquo;ll work on my 7810 before I give you my credit card number.&rdquo;</p>
+<p><strong>ELL&rsquo;s opportunity:</strong> Be the ONLY place online where a farmer can type in their tractor and get an instant, definitive answer: &ldquo;Yes, the FJD AT2 works on your 2004 John Deere 7810. You need Bracket Kit B and Steering Harness C. Here&rsquo;s the install video for your exact model.&rdquo;</p>
+<p>This single capability — instant compatibility confirmation — is the moat.</p>
+<hr />
+<h2 id="3-funnel-architecture-the-confidence-engine">3. Funnel Architecture: The &ldquo;Confidence Engine&rdquo;</h2>
+<h3 id="overview">Overview</h3>
+<p>The funnel has five stages, each designed to address a specific psychological barrier:</p>
+<pre><code>AWARENESS → ENGAGEMENT → QUALIFICATION → CONVERSION → RETENTION
+   │              │              │              │            │
+   │              │              │              │            │
+&quot;I've heard   &quot;Does it      &quot;Is it right   &quot;I'm ready   &quot;I'll tell
+ of this&quot;     fit mine?&quot;    for me?&quot;        to buy&quot;       others&quot;
+</code></pre>
+<h3 id="stage-1-awareness-content-strategy">Stage 1 — Awareness: Content Strategy</h3>
+<p><strong>Goal:</strong> Get in front of farmers who are (a) already searching for autosteer, or (b) don&rsquo;t know they need it yet.</p>
+<h4 id="youtube-video-topics-20-ideas">YouTube Video Topics (20 Ideas)</h4>
+<p>YouTube is the #1 discovery channel for precision ag. These videos should be 8-15 minutes, authentic (filmed in cab/field, not studio), and answer ONE specific question each:</p>
+<p><strong>Installation &amp; Compatibility (High Search Intent)</strong>
+1. &ldquo;Installing FJD AT2 Autosteer on a John Deere 4440 — Full Walkthrough&rdquo;
+2. &ldquo;FJD Autosteer on Case IH Magnum: What You Need to Know&rdquo;
+3. &ldquo;Does FJD Autosteer Work on Older Tractors? (Pre-2000 Models)&rdquo;
+4. &ldquo;FJD AT2 Install: The 5 Most Common Mistakes (and How to Avoid Them)&rdquo;
+5. &ldquo;Hydraulic vs. Electric Steering: Which Does Your Tractor Need?&rdquo;
+6. &ldquo;FJD AT2 vs AT1 vs AT2 Max — Which Kit is Right for You?&rdquo;</p>
+<p><strong>ROI &amp; Business Case (Decision Stage)</strong>
+7. &ldquo;I Saved $22/Acre with Aftermarket Autosteer — Here&rsquo;s the Math&rdquo;
+8. &ldquo;Aftermarket Autosteer: $6,000 vs. Deere StarFire at $30,000 — Honest Comparison&rdquo;
+9. &ldquo;Will Autosteer Pay for Itself? ROI Calculator Walkthrough&rdquo;
+10. &ldquo;Why I Switched from Trimble to FJD (and Saved $20,000)&rdquo;</p>
+<p><strong>In-Field Demonstrations (Trust Building)</strong>
+11. &ldquo;FJD AT2 Night Planting Demo — Watch It Drive Itself in Total Darkness&rdquo;
+12. &ldquo;Autosteer Accuracy Test: FJD AT2 RTK vs. Deere StarFire Side by Side&rdquo;
+13. &ldquo;Spraying with FJD Autosteer: Zero Overlap, Zero Waste&rdquo;
+14. &ldquo;Planting Corn at 8 MPH with FJD Autosteer — Cab Cam Uncut&rdquo;
+15. &ldquo;FJD Autosteer on Hilly Ground: Does It Hold the Line?&rdquo;</p>
+<p><strong>Educational &amp; Awareness (Top of Funnel)</strong>
+16. &ldquo;What is RTK and Why Does It Matter for Your Farm?&rdquo;
+17. &ldquo;Autosteer for Beginners: Everything You Need to Know in 2026&rdquo;
+18. &ldquo;5 Reasons Your Next Tractor Doesn&rsquo;t Need Factory Autosteer&rdquo;
+19. &ldquo;NTRIP, Base Station, or RTK Network? Which Correction Source is Best?&rdquo;
+20. &ldquo;The Real Cost of Overlap: How Much Are You Wasting Per Field?&rdquo;</p>
+<h4 id="seo-keyword-targets-35-keywords">SEO Keyword Targets (35+ Keywords)</h4>
+<p><strong>High Intent (Ready to Buy)</strong>
+| Keyword | Monthly Volume (Est.) | Intent |
+|---------|----------------------|--------|
+| buy aftermarket autosteer | 500 | Transactional |
+| FJD AT2 price | 800 | Transactional |
+| FJD autosteer for sale | 400 | Transactional |
+| cheapest RTK autosteer | 600 | Transactional |
+| aftermarket autosteer kit | 700 | Transactional |
+| FJD AT2 vs AT1 | 300 | Commercial |
+| best aftermarket GPS autosteer | 900 | Commercial |</p>
+<p><strong>Medium Intent (Researching)</strong>
+| Keyword | Monthly Volume (Est.) | Intent |
+|---------|----------------------|--------|
+| aftermarket autosteer reviews | 500 | Informational |
+| FJD Dynamics review | 600 | Informational |
+| autosteer for [tractor brand/model] | 200-500 each | Informational |
+| RTK autosteer accuracy | 400 | Informational |
+| FJD vs Trimble | 350 | Commercial |
+| FJD vs John Deere autosteer | 300 | Commercial |
+| aftermarket autosteer compatibility | 250 | Informational |
+| autosteer install difficulty | 300 | Informational |
+| precision ag cost savings | 400 | Informational |</p>
+<p><strong>Low Intent / Awareness (Educational)</strong>
+| Keyword | Monthly Volume (Est.) | Intent |
+|---------|----------------------|--------|
+| what is autosteer | 1,200 | Informational |
+| GPS guidance for tractors | 1,500 | Informational |
+| precision agriculture technology | 2,000 | Informational |
+| RTK GPS farming | 800 | Informational |
+| tractor GPS guidance system | 1,000 | Informational |
+| how does autosteer work | 900 | Informational |
+| NTRIP RTK correction | 400 | Informational |
+| reduce overlap farming | 300 | Informational |
+| autosteer for old tractors | 600 | Informational |
+| farm input cost reduction technology | 250 | Informational |
+| autosteering system installation | 350 | Informational |</p>
+<p><strong>Long-Tail / Model-Specific (Create pages for each)</strong>
+| Keyword Pattern | Examples |
+|----------------|----------|
+| autosteer for [make] [model] | &ldquo;autosteer for John Deere 4440&rdquo; |
+| FJD AT2 on [make] [model] | &ldquo;FJD AT2 on Case IH 7140&rdquo; |
+| [make] [model] GPS guidance | &ldquo;Kubota M7 GPS guidance&rdquo; |
+| aftermarket autosteer [make] | &ldquo;aftermarket autosteer New Holland&rdquo; |</p>
+<p><em>Create individual SEO landing pages for the top 50 tractor models. Each page answers the compatibility question and links to the tool.</em></p>
+<h4 id="social-media-strategy">Social Media Strategy</h4>
+<p><strong>Facebook (Primary — where farmers are)</strong>
+- <strong>Page:</strong> Elm Lake Labs
+- <strong>Group:</strong> &ldquo;Aftermarket Autosteer Owners&rdquo; (community, not sales pitch)
+- <strong>Posting frequency:</strong> 4-5x/week
+- <strong>Content mix:</strong>
+  - 40% — In-field demos and customer stories
+  - 25% — Educational (RTK explained, overlap cost, etc.)
+  - 20% — Product/compatibility updates
+  - 15% — Behind-the-scenes, personality, humor
+- <strong>Budget:</strong> $500-$1,500/month for boosted posts and targeted ads
+- <strong>Targeting:</strong> Male, 25-65, interests in farming, John Deere, precision ag, rural areas, Farm Bureau members</p>
+<p><strong>YouTube (Secondary — discovery &amp; SEO)</strong>
+- <strong>Channel:</strong> Elm Lake Labs
+- <strong>Posting frequency:</strong> 2 videos/week (1 install/demo, 1 educational)
+- <strong>Format:</strong> 8-15 min, authentic cab-cam style, real tractors, real fields
+- <strong>Thumbnails:</strong> Split-screen comparisons, before/after, tractor + price callout
+- <strong>Budget:</strong> $200-$500/month for YouTube Ads (pre-roll on competitor videos)</p>
+<p><strong>TikTok / Instagram Reels (Tertiary — younger operators)</strong>
+- <strong>Posting frequency:</strong> 3-5x/week (short clips from YouTube content)
+- <strong>Content:</strong> 15-60 second clips: wheel turning itself, accuracy demos, &ldquo;the sound of straight rows&rdquo;
+- <strong>Budget:</strong> Organic only initially; $300/month if traction builds</p>
+<p><strong>Reddit (Engagement — not advertising)</strong>
+- <strong>Strategy:</strong> Answer questions in r/farming, r/precisionag, r/tractors. Link to ELL compatibility tool when relevant.
+- <strong>Rule:</strong> Be genuinely helpful, not salesy. Reddit will destroy you if you&rsquo;re obviously advertising.
+- <strong>Budget:</strong> Time only — no paid ads on Reddit</p>
+<h4 id="paid-ads-strategy">Paid Ads Strategy</h4>
+<p><strong>Google Search Ads — $2,000-$4,000/month</strong>
+- <strong>Campaign 1: Brand Defense</strong> — Bid on &ldquo;FJD AT2,&rdquo; &ldquo;FJD Dynamics autosteer,&rdquo; &ldquo;Elm Lake Labs&rdquo;
+  - Budget: $500/month
+  - Expected CPC: $1.50-$3.00
+  - Goal: Capture branded search, prevent competitors from stealing traffic
+- <strong>Campaign 2: High Intent</strong> — &ldquo;buy aftermarket autosteer,&rdquo; &ldquo;cheapest RTK autosteer,&rdquo; &ldquo;aftermarket GPS tractor&rdquo;
+  - Budget: $1,000-$2,000/month
+  - Expected CPC: $3.00-$8.00
+  - Goal: Capture bottom-of-funnel buyers, send to compatibility tool
+- <strong>Campaign 3: Model-Specific</strong> — &ldquo;[make] [model] autosteer&rdquo; for top 20 tractor models
+  - Budget: $500-$1,000/month
+  - Expected CPC: $1.00-$3.00 (low competition, high specificity)
+  - Goal: Long-tail capture, send to model-specific landing pages</p>
+<p><strong>YouTube Ads — $1,000-$2,000/month</strong>
+- <strong>Pre-roll on competitor videos:</strong> Target viewers of Trimble, Deere, Raven, AgOpenGPS content
+- <strong>Format:</strong> 15-30 second skippable ads with strong hook (&ldquo;What if autosteer was $6K instead of $30K?&rdquo;)
+- <strong>Retargeting:</strong> Show ads to people who visited site but didn&rsquo;t complete compatibility tool
+- <strong>Expected CPV:</strong> $0.03-$0.08</p>
+<p><strong>Facebook/Instagram Ads — $1,000-$2,500/month</strong>
+- <strong>Campaign 1: Awareness</strong> — Video ads (cab cam demos) targeting farming interests
+  - Budget: $500/month
+  - Goal: Video views, page likes, initial awareness
+- <strong>Campaign 2: Retargeting</strong> — Dynamic ads to site visitors, compatibility tool users who didn&rsquo;t buy
+  - Budget: $500-$1,000/month
+  - Goal: Return visitors to site, push to conversion
+- <strong>Campaign 3: Lookalike</strong> — Target farmers similar to existing customers
+  - Budget: $500-$1,000/month
+  - Goal: Expand reach to similar demographics</p>
+<p><strong>Total Monthly Ad Spend: $4,000-$8,500/month</strong>
+- Start at $4,000/month in Phase 1, scale to $8,500 as conversion data improves
+- Expected blended CAC: $150-$300 per sale (target: under $200 by month 6)</p>
+<hr />
+<h3 id="stage-2-engagement-tractor-compatibility-tool">Stage 2 — Engagement: Tractor Compatibility Tool</h3>
+<p><strong>Goal:</strong> Convert a curious visitor into an engaged lead by answering their #1 question: &ldquo;Will this fit my tractor?&rdquo;</p>
+<h4 id="the-will-it-fit-tool-detailed-specification">The &ldquo;Will It Fit?&rdquo; Tool — Detailed Specification</h4>
+<p><strong>What the farmer sees:</strong></p>
+<p>The tool is a prominent, above-the-fold interactive element on the homepage and every product page. It&rsquo;s NOT buried in a FAQ. It IS the primary call-to-action.</p>
+<p><strong>Headline:</strong> &ldquo;Check Your Tractor in 30 Seconds&rdquo;
+<strong>Subhead:</strong> &ldquo;Find out exactly which FJD autosteer kit fits your machine — and what you&rsquo;ll need to install it.&rdquo;</p>
+<h4 id="user-flow-step-by-step">User Flow (Step by Step)</h4>
+<p><strong>Step 1: Select Tractor Make</strong>
+- Dropdown or search with 40+ supported makes
+- Top makes pinned: John Deere, Case IH, New Holland, Kubota, AGCO/Massey Ferguson, Fendt, Claas
+- Includes: Challenger, Versatile, McCormick, Kioti, Mahindra, Deutz-Fahr, Same, Valtra, etc.
+- Also: &ldquo;I don&rsquo;t see my brand&rdquo; → opens chat with AI assistant</p>
+<p><strong>Step 2: Select Tractor Model</strong>
+- Dynamically filtered by make selection
+- Shows model families (e.g., &ldquo;7000 Series,&rdquo; &ldquo;8R Series&rdquo;) with specific models nested
+- Search functionality for fast lookup</p>
+<p><strong>Step 3: Select Year Range</strong>
+- Dropdown filtered by model
+- Grouped logically (e.g., &ldquo;2000-2005,&rdquo; &ldquo;2006-2010&rdquo;) where steering type is consistent across years
+- Exact year when it matters (steering changes mid-generation)</p>
+<p><strong>Step 4: Confirm Steering Type (if ambiguous)</strong>
+- Some tractors changed steering mid-model-year or had options
+- Show reference photos: &ldquo;Does your steering column look like THIS (mechanical) or THIS (electrohydraulic)?&rdquo;
+- Skip this step if steering type is unambiguous for the year/model selected</p>
+<p><strong>Step 5: Results Screen</strong>
+- <strong>Green check ✅ — &ldquo;Confirmed Compatible!&rdquo;</strong>
+  - Shows: Exact kit needed (AT1 or AT2), specific bracket type, steering harness/adapter
+  - Shows: All-in price (kit + bracket + accessories)
+  - Shows: Estimated install time (&ldquo;Most farmers complete this in 2-4 hours&rdquo;)
+  - Shows: Link to install video for this specific tractor (or closest match)
+  - CTA: &ldquo;Add to Cart&rdquo; + &ldquo;Talk to a Specialist&rdquo; (opens AI chat)
+  - Lead capture: &ldquo;Email me this compatibility report&rdquo; (captures email even if they don&rsquo;t buy today)</p>
+<ul>
+<li><strong>Yellow warning ⚠️ — &ldquo;Compatible with Modifications&rdquo;</strong></li>
+<li>Shows: What additional parts or modifications are needed</li>
+<li>Shows: Estimated additional cost</li>
+<li>CTA: &ldquo;Talk to a Specialist&rdquo; (opens AI chat with context pre-loaded)</li>
+<li>
+<p>Lead capture: Email the full compatibility assessment</p>
+</li>
+<li>
+<p><strong>Red X ❌ — &ldquo;Not Compatible (Yet)&rdquo;</strong></p>
+</li>
+<li>Shows: Honest explanation of why (e.g., &ldquo;This tractor uses a full-time power steering system that requires a custom mounting solution. We&rsquo;re working on a kit for this model.&rdquo;)</li>
+<li>CTA: &ldquo;Notify me when support is added&rdquo; (captures email)</li>
+<li>
+<p>Shows: Alternative options if any exist</p>
+</li>
+<li>
+<p><strong>Gray ? — &ldquo;We Need More Info&rdquo;</strong></p>
+</li>
+<li>Shows: &ldquo;We need to see your steering setup to confirm. Upload a photo or start a chat.&rdquo;</li>
+<li>CTA: Opens AI chat with image upload capability</li>
+<li>Lead capture: Captures contact info for follow-up</li>
+</ul>
+<h4 id="database-schema">Database Schema</h4>
+<pre><code class="language-sql">-- Core tables for the compatibility engine
+
+CREATE TABLE tractor_makes (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,         -- &quot;John Deere&quot;
+  slug VARCHAR(100) UNIQUE NOT NULL,  -- &quot;john-deere&quot;
+  logo_url VARCHAR(500),
+  display_order INT DEFAULT 999,
+  is_popular BOOLEAN DEFAULT FALSE    -- pins to top of dropdown
+);
+
+CREATE TABLE tractor_models (
+  id SERIAL PRIMARY KEY,
+  make_id INT REFERENCES tractor_makes(id),
+  name VARCHAR(200) NOT NULL,         -- &quot;7810&quot;
+  series VARCHAR(100),                -- &quot;7000 Series&quot;
+  year_start INT NOT NULL,            -- 1997
+  year_end INT,                       -- 2003 (NULL = current)
+  steering_type VARCHAR(50) NOT NULL, -- &quot;hydrostatic&quot;, &quot;mechanical&quot;, &quot;electrohydraulic&quot;
+  steering_subtype VARCHAR(100),      -- &quot;orbitrol&quot;, &quot;priority_valve&quot;, &quot;load_sensing&quot;
+  wheel_type VARCHAR(50),             -- &quot;standard&quot;, &quot;MFWD&quot;, &quot;track&quot;
+  cab_type VARCHAR(50),               -- &quot;open_station&quot;, &quot;cab&quot;
+  notes TEXT,                         -- special considerations
+  popularity_rank INT                 -- for search ordering
+);
+
+CREATE TABLE fjd_products (
+  id SERIAL PRIMARY KEY,
+  sku VARCHAR(50) UNIQUE NOT NULL,
+  name VARCHAR(200) NOT NULL,         -- &quot;FJD AT2 Auto Steer System&quot;
+  product_type VARCHAR(50),           -- &quot;autosteer_kit&quot;, &quot;bracket&quot;, &quot;accessory&quot;, &quot;rtk&quot;
+  base_price DECIMAL(10,2),
+  description TEXT,
+  image_url VARCHAR(500)
+);
+
+CREATE TABLE compatibility_rules (
+  id SERIAL PRIMARY KEY,
+  model_id INT REFERENCES tractor_models(id),
+  product_id INT REFERENCES fjd_products(id),
+  status VARCHAR(20) NOT NULL,        -- &quot;compatible&quot;, &quot;compatible_modified&quot;, &quot;incompatible&quot;, &quot;unknown&quot;
+  bracket_type VARCHAR(100),          -- &quot;universal_A&quot;, &quot;deere_B&quot;, &quot;case_C&quot;
+  steering_kit VARCHAR(100),          -- &quot;hydraulic_kit_1&quot;, &quot;electric_kit_2&quot;
+  additional_parts TEXT[],            -- array of additional SKUs needed
+  install_time_hours DECIMAL(3,1),    -- estimated install time
+  install_difficulty VARCHAR(20),     -- &quot;easy&quot;, &quot;moderate&quot;, &quot;advanced&quot;
+  install_video_url VARCHAR(500),     -- YouTube link for this model
+  notes TEXT,                         -- compatibility notes
+  verified_date DATE,                 -- last time this was confirmed
+  verified_by VARCHAR(100)            -- who verified it
+);
+
+CREATE TABLE compatibility_lookups (
+  id SERIAL PRIMARY KEY,
+  created_at TIMESTAMP DEFAULT NOW(),
+  make VARCHAR(100),
+  model VARCHAR(200),
+  year INT,
+  steering_type VARCHAR(50),
+  result_status VARCHAR(20),          -- what result they saw
+  user_email VARCHAR(200),            -- if captured
+  user_phone VARCHAR(20),             -- if captured
+  ip_address INET,
+  user_agent TEXT,
+  session_id VARCHAR(100),            -- for funnel tracking
+  converted_to_lead BOOLEAN DEFAULT FALSE,
+  converted_to_sale BOOLEAN DEFAULT FALSE
+);
+
+-- Indexes for performance
+CREATE INDEX idx_models_make ON tractor_models(make_id);
+CREATE INDEX idx_compat_model ON compatibility_rules(model_id);
+CREATE INDEX idx_compat_product ON compatibility_rules(product_id);
+CREATE INDEX idx_lookups_email ON compatibility_lookups(user_email);
+CREATE INDEX idx_lookups_date ON compatibility_lookups(created_at);
+</code></pre>
+<h4 id="lead-capture-integration">Lead Capture Integration</h4>
+<p>The compatibility tool is the primary lead magnet. Every interaction captures data:</p>
+<ul>
+<li><strong>Implicit capture (no form required):</strong> Tractor make/model/year selection is logged with session ID. Used for retargeting even without email.</li>
+<li><strong>Soft capture (low friction):</strong> &ldquo;Email me this compatibility report&rdquo; — one field, email only. Triggers automated nurture sequence.</li>
+<li><strong>Full capture (high intent):</strong> &ldquo;Talk to a specialist&rdquo; — name, email, phone, tractor details pre-filled from tool. Routes to AI chatbot or human.</li>
+<li><strong>Exit intent capture:</strong> If user starts but doesn&rsquo;t complete the tool, show exit-intent popup: &ldquo;We&rsquo;ll save your results. Enter your email to pick up where you left off.&rdquo;</li>
+</ul>
+<p><strong>Data flows to:</strong>
+- CRM (HubSpot/Pipedrive) as a new lead with tractor details
+- Email automation (Klaviyo/ActiveCampaign) triggers model-specific nurture sequence
+- Retargeting pixel fires for Google/Facebook ad audiences
+- Analytics (Mixpanel/PostHog) tracks funnel completion rates</p>
+<hr />
+<h3 id="stage-3-qualification-ai-chatbot">Stage 3 — Qualification: AI Chatbot</h3>
+<p><strong>Goal:</strong> Replace the &ldquo;call for info&rdquo; step with an AI agent that can answer 90%+ of farmer questions instantly, 24/7, and intelligently hand off the rest to a human.</p>
+<h4 id="platform-comparison">Platform Comparison</h4>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Monthly Cost</th>
+<th>Per-Interaction Cost</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Intercom Fin</strong></td>
+<td>$29/seat + $0.99/resolution</td>
+<td>~$0.99/conversation</td>
+<td>Best-in-class AI, ingests PDFs, cites sources, seamless handoff</td>
+<td>Cost adds up at scale (500 resolutions = $495/mo)</td>
+</tr>
+<tr>
+<td><strong>Custom OpenAI Assistant</strong></td>
+<td>API costs only (~$0.03-$0.10/conversation)</td>
+<td>Very low</td>
+<td>Full control, custom UI, cheapest at scale</td>
+<td>Requires development, no built-in chat widget, DIY handoff</td>
+</tr>
+<tr>
+<td><strong>Drift</strong></td>
+<td>$2,500+/month</td>
+<td>Included</td>
+<td>Strong B2B sales features, meeting booking</td>
+<td>Expensive, overkill for product sales, complex setup</td>
+</tr>
+<tr>
+<td><strong>Tidio AI</strong></td>
+<td>$29-$59/month + $0.50/conversation</td>
+<td>~$0.50</td>
+<td>Budget-friendly, good for e-commerce</td>
+<td>Less sophisticated AI, limited technical training</td>
+</tr>
+<tr>
+<td><strong>Crisp</strong></td>
+<td>$25-$95/month</td>
+<td>Included (limited)</td>
+<td>All-in-one (chat + email + CRM), affordable</td>
+<td>AI is less capable, smaller knowledge base limit</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommendation: Start with Intercom Fin, plan migration to custom OpenAI</strong></p>
+<ul>
+<li><strong>Phase 1 (Month 1-3):</strong> Use Intercom Fin. Fastest to deploy, best out-of-box quality. At ~100 conversations/month, cost is ~$129/month (base + resolutions). Acceptable.</li>
+<li><strong>Phase 2 (Month 4-6):</strong> As volume grows, evaluate custom OpenAI Assistant API. At 500+ conversations/month, custom becomes dramatically cheaper ($15-$50/month vs. $524+/month for Intercom).</li>
+<li><strong>Phase 3 (Month 6+):</strong> If volume exceeds 1,000 conversations/month, definitely move to custom. Build with OpenAI Assistants API + Vercel AI SDK + custom chat widget.</li>
+</ul>
+<h4 id="training-data-required">Training Data Required</h4>
+<p>The AI chatbot is only as good as its knowledge base. Assemble the following:</p>
+<p><strong>Technical Documents (Priority 1 — load immediately)</strong>
+- FJD AT2 full user manual (PDF)
+- FJD AT1 full user manual (PDF)
+- FJD AT2 Max user manual (PDF)
+- All bracket installation guides (per tractor make/model)
+- Wiring diagrams for each steering type
+- RTK configuration guides (NTRIP setup, base station setup)
+- FJD Connect platform documentation
+- Troubleshooting guides / known issues database
+- Firmware update procedures</p>
+<p><strong>Compatibility Data (Priority 1)</strong>
+- Complete tractor compatibility matrix (same data as the compatibility tool database)
+- Bracket cross-reference chart (which bracket fits which tractor)
+- Steering type identification guide with photos
+- Antenna mounting specifications per tractor model</p>
+<p><strong>Sales &amp; Positioning (Priority 2)</strong>
+- Feature comparison: FJD vs. Deere vs. Trimble vs. Raven vs. AgOpenGPS
+- Pricing breakdowns with bundles
+- ROI calculations and case studies
+- Warranty terms and return policy
+- Financing options and details
+- Shipping information and timelines
+- &ldquo;Guaranteed to Fit&rdquo; program terms</p>
+<p><strong>FAQ &amp; Common Objections (Priority 2)</strong>
+- &ldquo;Why is this so much cheaper than Deere?&rdquo; (aftermarket vs. OEM cost structure)
+- &ldquo;Is Chinese equipment reliable?&rdquo; (address head-on with warranty, reviews, install base)
+- &ldquo;Do I need a base station?&rdquo; (explain NTRIP/RTK network options)
+- &ldquo;Will this void my tractor warranty?&rdquo; (Magnuson-Moss Warranty Act)
+- &ldquo;Can I move it between tractors?&rdquo; (yes, explain how)
+- &ldquo;What accuracy can I really expect?&rdquo; (2.5cm RTK, 15cm WAAS, real-world results)
+- &ldquo;How hard is the install?&rdquo; (2-4 hours average, video guides available)</p>
+<h4 id="example-conversation-flows">Example Conversation Flows</h4>
+<p><strong>Conversation 1: Compatibility Check (Most Common)</strong></p>
+<pre><code>FARMER: Does this work on a 2012 Case IH Magnum 235?
+
+AI: Great question! Yes, the FJD AT2 is fully compatible with the 2012 Case IH 
+Magnum 235. ✅
+
+Here's what you'd need:
+• FJD AT2 Auto Steer System Kit — $5,495
+• Case IH Magnum Bracket Kit (2010-2014) — $189
+• Hydraulic Steering Adapter — included with AT2
+
+The Magnum 235 uses a load-sensing hydraulic steering system, which works perfectly 
+with the AT2's electric steering wheel. Most farmers get this installed in about 
+3 hours.
+
+Would you like to:
+1. See the install video for Case IH Magnum?
+2. Get a complete quote with RTK options?
+3. Talk to a specialist about your specific setup?
+
+FARMER: What about RTK? I don't have a base station.
+
+AI: No problem — you don't need your own base station. Here are your options:
+
+**Option 1: NTRIP Network ($200-$400/year)**
+Best for most farmers. Uses cell signal to get RTK corrections. Gives you 
+sub-inch (2.5cm) accuracy anywhere you have cell service.
+
+**Option 2: FJD Base Station ($1,800 one-time)**
+Best if you're in an area with no cell signal, or if you want zero recurring costs. 
+Set it up on your highest point, covers about a 10-mile radius.
+
+**Option 3: WAAS/SBAS (Free, built-in)**
+Already included with every AT2. Gives you 6-8 inch (15cm) accuracy. Fine for 
+spraying and fertilizing, but most farmers prefer RTK for planting.
+
+Most of our customers go with NTRIP — it's the simplest and most cost-effective. 
+Want me to check NTRIP coverage in your area?
+</code></pre>
+<p><strong>Conversation 2: Price Objection / Competitive Comparison</strong></p>
+<pre><code>FARMER: I'm looking at the Deere StarFire 7000 + AutoTrac for my 8R. Why would 
+I go aftermarket?
+
+AI: Smart to compare options. Here's the honest breakdown:
+
+**John Deere AutoTrac + StarFire 7000:**
+• Hardware: ~$12,000-$18,000
+• AutoTrac activation: $3,000-$5,000
+• StarFire subscription: $1,200-$2,400/year
+• Total Year 1: $16,200-$25,400
+• Total 5-Year: $22,000-$35,000
+
+**FJD AT2 with RTK:**
+• AT2 Kit: $5,495
+• RTK (NTRIP): $300/year
+• Total Year 1: $5,795
+• Total 5-Year: $6,695
+
+**What you get with FJD that Deere doesn't offer:**
+• Move it between ANY tractor (Deere locks to one machine)
+• No dealer required for activation or updates
+• No recurring &quot;activation&quot; fees
+• 2.5cm RTK accuracy (same as StarFire RTK)
+• ISOBUS compatible (AT2)
+
+**What Deere does better:**
+• Seamless integration with Deere displays (if you're already in that ecosystem)
+• Deere dealer support network
+• Section control integration (though FJD's ISOBUS is catching up)
+
+The bottom line: If you're running all Deere equipment and want one-vendor simplicity, 
+AutoTrac is great — but expensive. If you want the same accuracy at 1/4 the price 
+and the flexibility to use it on multiple machines, FJD is the move.
+
+Want me to build a side-by-side ROI comparison for your specific operation?
+</code></pre>
+<p><strong>Conversation 3: Installation Anxiety</strong></p>
+<pre><code>FARMER: I'm not super techy. How hard is this to install? I've got a 1995 JD 7800.
+
+AI: Totally understand the concern. The good news: the JD 7800 is one of our most 
+popular installs. Here's what it actually involves:
+
+**The install is basically 4 steps:**
+1. Mount the GNSS antenna on the cab roof (2 bolts + magnetic base option)
+2. Attach the electronic steering wheel to your existing steering column (slides on, 
+   4 bolts)
+3. Mount the tablet/terminal on the dash (suction cup or RAM mount)
+4. Run the cables and plug everything in (color-coded connectors)
+
+**Time:** 2-3 hours for the 7800 specifically
+**Tools needed:** Basic socket set, drill (for antenna mount if not using magnetic)
+**Difficulty:** If you can change your own oil, you can do this.
+
+We also have a full install video for the 7000 series: [link]
+
+And if you hit a snag, we offer:
+• **Free FaceTime/video call support** during your install
+• **$500 White Glove service** — we pre-configure your tablet with your farm, field 
+  boundaries, and A-B lines before we ship. You plug in and go.
+
+Want me to add the White Glove option to your quote?
+
+FARMER: What if I can't get it working?
+
+AI: We've got you covered with our Guaranteed to Fit promise:
+
+If you follow the install guide and can't get it working:
+1. We'll troubleshoot live with you via video call (free)
+2. If that doesn't solve it, we'll send a replacement unit (free)
+3. If it's genuinely not compatible with your tractor, full refund + we pay 
+   return shipping
+
+No one else in the aftermarket autosteer space offers this. We can do it because 
+the 7800 is a verified-compatible model and we've done hundreds of these installs.
+</code></pre>
+<p><strong>Conversation 4: Upsell / RTK Bundle</strong></p>
+<pre><code>FARMER: I just want the basic kit. How much?
+
+AI: For the basic FJD AT2 kit, you're looking at $5,495 — that includes the 
+electronic steering wheel, GNSS antenna, control terminal (10&quot; tablet), IMU, all 
+cables, and mounting hardware. Plus 2-year warranty and free shipping.
+
+Out of the box, it runs on WAAS (free satellite correction) which gives you about 
+6&quot; pass-to-pass accuracy. That's plenty for spraying and general fieldwork.
+
+Quick question though — what are you mainly using it for?
+
+FARMER: Mostly planting corn and beans.
+
+AI: For planting, I'd really recommend upgrading to RTK accuracy. Here's why:
+
+At 6&quot; accuracy (WAAS), you'll still see some overlap and gaps in your rows. That 
+means:
+• Wasted seed in overlap zones (~3-5% overapplication)
+• Gaps that reduce yield
+• Visible crooked rows (if that bugs you 😄)
+
+At 1&quot; accuracy (RTK), your rows are dead straight and perfectly spaced. The seed 
+savings alone typically pay for RTK in one season on 500+ acres.
+
+**RTK upgrade options:**
+• NTRIP subscription: +$300/year (easiest, most popular)
+• FJD base station: +$1,800 one-time (no recurring cost)
+
+For a 1,000-acre corn/bean operation, RTK typically saves $8-$15/acre in reduced 
+input overlap. That's $8,000-$15,000/year in savings from a $300/year subscription.
+
+Want me to run the exact numbers for your acreage?
+</code></pre>
+<h4 id="handoff-triggers-ai-human">Handoff Triggers (AI → Human)</h4>
+<p>The AI should handle 85-90% of conversations autonomously. It hands off to a human when:</p>
+<p><strong>Immediate handoff (route to human queue):</strong>
+- Customer explicitly says &ldquo;I want to talk to a person&rdquo; or &ldquo;let me speak to someone&rdquo;
+- Order issue or complaint about existing purchase
+- Warranty claim or return request
+- Technical issue during active installation (farmer is in the cab, stuck)
+- Customer mentions legal issue or threatens action</p>
+<p><strong>Warm handoff (AI summarizes, human continues):</strong>
+- Conversation exceeds 10 exchanges without resolution
+- AI confidence drops below threshold (can&rsquo;t find answer in knowledge base)
+- Customer asks about bulk/fleet pricing (5+ units)
+- Customer is a dealer or reseller (different pricing structure)
+- Custom integration question (e.g., connecting to existing ISO implement)
+- Compatibility result is &ldquo;unknown&rdquo; — needs manual verification</p>
+<p><strong>Scheduled callback (capture info, human follows up):</strong>
+- After-hours inquiry that needs human expertise
+- Customer wants a live demo or farm visit
+- Financing discussion for large orders
+- Customer in an area where NTRIP coverage is uncertain</p>
+<hr />
+<h3 id="stage-4-conversion-purchase-flow">Stage 4 — Conversion: Purchase Flow</h3>
+<p><strong>Goal:</strong> Make buying as frictionless as possible once confidence is established.</p>
+<h4 id="e-commerce-platform">E-Commerce Platform</h4>
+<p><strong>Recommendation: Shopify Plus (or standard Shopify with apps)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Consideration</th>
+<th>Shopify</th>
+<th>Custom (Next.js + Stripe)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time to launch</td>
+<td>1-2 weeks</td>
+<td>4-8 weeks</td>
+</tr>
+<tr>
+<td>Monthly cost</td>
+<td>$39-$399/month</td>
+<td>Hosting only (~$20/month)</td>
+</tr>
+<tr>
+<td>Transaction fees</td>
+<td>2.4-2.9% + $0.30</td>
+<td>2.9% + $0.30 (Stripe)</td>
+</tr>
+<tr>
+<td>Customization</td>
+<td>Good (Liquid templates + apps)</td>
+<td>Unlimited</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td>Shopify handles updates</td>
+<td>You handle everything</td>
+</tr>
+<tr>
+<td>Financing integration</td>
+<td>Native (Shop Pay Installments)</td>
+<td>Manual (Affirm SDK)</td>
+</tr>
+<tr>
+<td>Inventory management</td>
+<td>Built-in</td>
+<td>Build or integrate</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Verdict:</strong> Start with Shopify. Migrate to custom only if Shopify&rsquo;s limitations become bottlenecks (unlikely for this product category).</p>
+<p><em>Note: ELL already has a Shopify store at store.elmlakelabs.com — build on this foundation.</em></p>
+<h4 id="product-configuration-bundles">Product Configuration &amp; Bundles</h4>
+<p><strong>Core Products:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>SKU</th>
+<th>Price</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FJD AT2 Auto Steer System</td>
+<td>ELL-AT2-KIT</td>
+<td>$5,495</td>
+<td>Complete kit: electronic steering wheel, GNSS antenna, terminal, IMU, cables, mounting</td>
+</tr>
+<tr>
+<td>FJD AT1 Autosteering Kit</td>
+<td>ELL-AT1-KIT</td>
+<td>$3,995</td>
+<td>Budget option: GNSS receiver + electronic steering wheel, no terminal (use phone/tablet)</td>
+</tr>
+<tr>
+<td>FJD AT2 Max</td>
+<td>ELL-AT2MAX-KIT</td>
+<td>$7,495</td>
+<td>Premium: all-in-one design, built-in 4G, enhanced IMU</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Brackets &amp; Adapters (add-ons, shown after compatibility tool):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>SKU</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Universal Bracket Kit A</td>
+<td>ELL-BRKT-A</td>
+<td>$149</td>
+</tr>
+<tr>
+<td>John Deere Bracket Kit B</td>
+<td>ELL-BRKT-JD</td>
+<td>$189</td>
+</tr>
+<tr>
+<td>Case IH Bracket Kit C</td>
+<td>ELL-BRKT-CASE</td>
+<td>$189</td>
+</tr>
+<tr>
+<td>New Holland Bracket Kit D</td>
+<td>ELL-BRKT-NH</td>
+<td>$179</td>
+</tr>
+<tr>
+<td>Kubota Bracket Kit E</td>
+<td>ELL-BRKT-KUB</td>
+<td>$169</td>
+</tr>
+<tr>
+<td>Hydraulic Steering Adapter</td>
+<td>ELL-HYD-ADAPT</td>
+<td>$249</td>
+</tr>
+</tbody>
+</table>
+<p><strong>RTK Correction Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>SKU</th>
+<th>Price</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NTRIP Annual Subscription</td>
+<td>ELL-NTRIP-12</td>
+<td>$299/year</td>
+<td>Recurring</td>
+</tr>
+<tr>
+<td>NTRIP Monthly Subscription</td>
+<td>ELL-NTRIP-1</td>
+<td>$39/month</td>
+<td>Recurring</td>
+</tr>
+<tr>
+<td>FJD RTK Base Station</td>
+<td>ELL-BASE-RTK</td>
+<td>$1,799</td>
+<td>One-time</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bundles (Recommended — higher AOV):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Bundle</th>
+<th>Contents</th>
+<th>Price</th>
+<th>Savings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Starter Bundle</strong></td>
+<td>AT2 + Bracket + NTRIP 1-year</td>
+<td>$5,895</td>
+<td>Save $88</td>
+</tr>
+<tr>
+<td><strong>Pro Bundle</strong></td>
+<td>AT2 + Bracket + Base Station + White Glove</td>
+<td>$7,995</td>
+<td>Save $288</td>
+</tr>
+<tr>
+<td><strong>Fleet Kit (3-pack)</strong></td>
+<td>3x AT2 + 3x Bracket + NTRIP 1-year each</td>
+<td>$16,495</td>
+<td>Save $890</td>
+</tr>
+<tr>
+<td><strong>Max Bundle</strong></td>
+<td>AT2 Max + Bracket + NTRIP 1-year + White Glove</td>
+<td>$8,395</td>
+<td>Save $388</td>
+</tr>
+</tbody>
+</table>
+<h4 id="pricing-strategy">Pricing Strategy</h4>
+<ul>
+<li><strong>Transparent pricing</strong> — no &ldquo;call for quote&rdquo; anywhere on the site. This is a core differentiator.</li>
+<li><strong>Bundle incentives</strong> — bundles are 5-10% cheaper than à la carte. Push toward bundles via the compatibility tool (&ldquo;We recommend the Starter Bundle for your tractor — saves you $88&rdquo;).</li>
+<li><strong>Seasonal promotions:</strong></li>
+<li><strong>January-March (pre-season):</strong> 10% off bundles, free NTRIP for first year</li>
+<li><strong>April-June (planting season):</strong> Standard pricing, fast shipping emphasized</li>
+<li><strong>July-September (slow season):</strong> Demo units at 15% off, trade-in programs</li>
+<li><strong>October-December (harvest/off-season):</strong> Black Friday bundles, &ldquo;get ready for spring&rdquo; messaging</li>
+</ul>
+<h4 id="guaranteed-to-fit-offer">&ldquo;Guaranteed to Fit&rdquo; Offer</h4>
+<p>This is the conversion linchpin. Formalize it as a program:</p>
+<p><strong>&ldquo;Guaranteed to Fit&rdquo; Promise:</strong>
+1. Use the compatibility tool to confirm your tractor → receive a <strong>Compatibility Certificate</strong> (emailed PDF with tractor details, recommended kit, and guarantee terms)
+2. Purchase the recommended kit
+3. Follow the installation guide / watch the video
+4. If the kit doesn&rsquo;t fit or work on your confirmed tractor:
+   - Step 1: Free live video troubleshooting (same day, during business hours)
+   - Step 2: If unresolved, we ship a replacement unit at no cost (next business day)
+   - Step 3: If it&rsquo;s genuinely incompatible (our database was wrong), <strong>full refund + we pay all shipping + $100 credit toward your next purchase</strong>
+5. Standard 30-day return window for any other reason (buyer pays return shipping)</p>
+<p><strong>Terms &amp; Risk Mitigation:</strong>
+- Only applies to tractors confirmed &ldquo;Compatible&rdquo; (green check) by the tool
+- Doesn&rsquo;t cover damage from incorrect installation (but we&rsquo;ll help them fix it)
+- Logged in CRM — every guarantee claim is reviewed and the compatibility database is updated</p>
+<h4 id="white-glove-pre-configuration-upsell-500">White-Glove Pre-Configuration Upsell ($500)</h4>
+<p><strong>What&rsquo;s included in the $500 service:</strong>
+- Terminal (tablet) is unboxed, powered on, and fully configured before shipping
+- Customer&rsquo;s farm boundaries pre-loaded (from satellite/USDA data or customer-provided shapefiles)
+- A-B lines set up for primary fields
+- RTK/NTRIP connection pre-configured and tested
+- Firmware updated to latest version
+- Personalized 15-minute video walkthrough recorded for the customer
+- Unit ships in &ldquo;plug and play&rdquo; state — mount hardware, plug in, start driving</p>
+<p><strong>Positioning:</strong> &ldquo;Skip the setup. Start farming.&rdquo;
+<strong>Margin:</strong> High — $500 for ~1.5 hours of work. Should be 70%+ margin.
+<strong>Target attach rate:</strong> 30-40% of orders</p>
+<h4 id="financing-options">Financing Options</h4>
+<p>Farmers are accustomed to financing equipment. Offer multiple paths:</p>
+<p><strong>Option 1: Shop Pay Installments / Affirm (integrated with Shopify)</strong>
+- 4 interest-free payments of $1,374 (for AT2 at $5,495)
+- Or 6/12 month financing at 0-15% APR based on credit
+- Farmer applies at checkout — instant approval in most cases
+- Cost to ELL: 2-6% of transaction (Affirm merchant fee)</p>
+<p><strong>Option 2: Lease-to-Own Partnership</strong>
+- Partner with an ag equipment financing company (e.g., AgDirect, Farm Plan, Stearns Bank)
+- 12-36 month terms
+- Particularly attractive for fleet purchases
+- Cost to ELL: Referral structure, typically 1-3% origination fee</p>
+<p><strong>Option 3: Farm Credit / FSA Loans</strong>
+- Provide documentation that the FJD system qualifies as precision ag equipment under USDA programs
+- Some states offer precision ag grants/cost-share programs — create a list of active programs by state
+- No direct cost to ELL, significant conversion driver for budget-conscious operations</p>
+<hr />
+<h3 id="stage-5-post-sale-retention-referral">Stage 5 — Post-Sale: Retention &amp; Referral</h3>
+<p><strong>Goal:</strong> Turn every buyer into a promoter. In agriculture, one satisfied customer at the co-op can sell 5 more units.</p>
+<h4 id="installation-support">Installation Support</h4>
+<p><strong>Tiered support system:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Support Level</th>
+<th>Availability</th>
+<th>Response Time</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI Chatbot</td>
+<td>24/7</td>
+<td>Instant</td>
+<td>Website/SMS</td>
+</tr>
+<tr>
+<td>Video Library</td>
+<td>24/7</td>
+<td>Self-service</td>
+<td>YouTube + site</td>
+</tr>
+<tr>
+<td>Live Chat (human)</td>
+<td>8 AM - 8 PM CT</td>
+<td>&lt; 15 min</td>
+<td>Website</td>
+</tr>
+<tr>
+<td>Video Call Support</td>
+<td>8 AM - 6 PM CT</td>
+<td>&lt; 2 hours</td>
+<td>FaceTime/Zoom</td>
+</tr>
+<tr>
+<td>Emergency (planting season)</td>
+<td>6 AM - 10 PM CT</td>
+<td>&lt; 30 min</td>
+<td>Phone/SMS</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Install day support flow:</strong>
+1. Day before delivery: SMS/email — &ldquo;Your FJD AT2 arrives tomorrow. Watch this 3-minute prep video so you&rsquo;re ready.&rdquo;
+2. Day of delivery: SMS — &ldquo;Your kit has been delivered! When you&rsquo;re ready to install, reply START and we&rsquo;ll be on standby.&rdquo;
+3. During install: AI chatbot available with troubleshooting mode activated. Any question routes to priority queue.
+4. Post-install: SMS — &ldquo;How&rsquo;d it go? Reply with your accuracy screenshot and we&rsquo;ll make sure everything looks right.&rdquo;</p>
+<h4 id="follow-up-sequence-automated-emailsms">Follow-Up Sequence (Automated Email/SMS)</h4>
+<table>
+<thead>
+<tr>
+<th>Day</th>
+<th>Channel</th>
+<th>Message</th>
+<th>Goal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Email</td>
+<td>Order confirmation + tracking + install prep checklist</td>
+<td>Set expectations</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Email</td>
+<td>&ldquo;Meet your autosteer&rdquo; — feature overview, app download links</td>
+<td>Pre-educate</td>
+</tr>
+<tr>
+<td>3</td>
+<td>SMS</td>
+<td>&ldquo;Your FJD AT2 arrives today/tomorrow! Prep video: [link]&rdquo;</td>
+<td>Reduce install anxiety</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SMS</td>
+<td>&ldquo;How&rsquo;s the install going? Reply HELP if you need us.&rdquo;</td>
+<td>Catch problems early</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Email</td>
+<td>&ldquo;First week tips: calibration, A-B lines, RTK optimization&rdquo;</td>
+<td>Drive usage</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Email</td>
+<td>&ldquo;How many acres have you run? Here&rsquo;s how to check your stats.&rdquo;</td>
+<td>Engagement</td>
+</tr>
+<tr>
+<td>21</td>
+<td>SMS</td>
+<td>&ldquo;Quick question: would you recommend FJD to a friend? Reply 1-10&rdquo;</td>
+<td>NPS + referral trigger</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Email</td>
+<td>&ldquo;Your first month with FJD! Here&rsquo;s your overlap savings report.&rdquo;</td>
+<td>ROI reinforcement</td>
+</tr>
+<tr>
+<td>45</td>
+<td>Email</td>
+<td>&ldquo;Know someone who needs autosteer? Share your $200 referral code.&rdquo;</td>
+<td>Referral program</td>
+</tr>
+<tr>
+<td>60</td>
+<td>Email</td>
+<td>&ldquo;Leave a review, get a free FJD hat.&rdquo;</td>
+<td>Review collection</td>
+</tr>
+<tr>
+<td>90</td>
+<td>Email</td>
+<td>&ldquo;Season update: firmware updates, new features, prep for next season.&rdquo;</td>
+<td>Retention</td>
+</tr>
+<tr>
+<td>180</td>
+<td>Email</td>
+<td>&ldquo;Fleet upgrade: add autosteer to your second machine at 15% off.&rdquo;</td>
+<td>Upsell</td>
+</tr>
+<tr>
+<td>365</td>
+<td>Email</td>
+<td>&ldquo;Happy anniversary! Renew your NTRIP subscription and save 10%.&rdquo;</td>
+<td>Renewal</td>
+</tr>
+</tbody>
+</table>
+<h4 id="referral-program">Referral Program</h4>
+<p><strong>&ldquo;Neighbor&rsquo;s Discount&rdquo; Program:</strong>
+- Every customer gets a unique referral code
+- <strong>Referrer gets:</strong> $200 credit (toward NTRIP subscription, accessories, or next purchase)
+- <strong>Referred farmer gets:</strong> $200 off their first purchase
+- Codes are shareable via SMS, email, or printed card included in every shipment
+- Track referrals in CRM — some customers will become &ldquo;super referrers&rdquo;
+- Top referrers (5+ referrals) get &ldquo;Ambassador&rdquo; status: early access to new products, invitation to advisory board, deeper discounts</p>
+<p><strong>Physical referral cards:</strong>
+- Include 3 printed referral cards in every shipment
+- Card says: &ldquo;[Customer Name] thinks you should check this out. $200 off your FJD autosteer at elmlakelabs.com/ref/[CODE]&rdquo;
+- Simple, physical, shareable at the co-op or in the cab</p>
+<h4 id="review-testimonial-collection">Review &amp; Testimonial Collection</h4>
+<p><strong>Multi-channel approach:</strong></p>
+<ol>
+<li><strong>Automated review request (Day 60):</strong> Email with direct links to leave review on Google, Facebook, and the ELL website</li>
+<li><strong>Incentivized:</strong> &ldquo;Leave a review on Google and we&rsquo;ll send you a free FJD hat&rdquo; (cost: ~$8 for hat + shipping)</li>
+<li><strong>Video testimonials:</strong> Offer $50 store credit for a 2-minute video testimonial filmed in their cab/field. These become YouTube content and ad creative.</li>
+<li><strong>Case studies:</strong> For high-value or unique installs, conduct a 20-minute phone interview and write a full case study. Published on blog with farmer&rsquo;s permission.</li>
+<li><strong>Social proof:</strong> Aggregate reviews across Google, Facebook, Trustpilot, and display count on site (&ldquo;287 farmers and counting&rdquo;)</li>
+</ol>
+<hr />
+<h2 id="4-recommended-tool-stack-with-pricing">4. Recommended Tool Stack (with Pricing)</h2>
+<h3 id="complete-stack-estimated-monthly-cost-400-1200month">Complete Stack — Estimated Monthly Cost: $400-$1,200/month</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Tool</th>
+<th>Monthly Cost</th>
+<th>Why This One</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Website/CMS</strong></td>
+<td>Next.js + Vercel (headless) OR Shopify Storefront</td>
+<td>$0-$20 (Vercel) or $0 (Shopify)</td>
+<td>Fast, SEO-optimized, customizable for compatibility tool</td>
+</tr>
+<tr>
+<td><strong>E-commerce</strong></td>
+<td>Shopify ($39-$399/mo)</td>
+<td>$79/month (Basic)</td>
+<td>Already in use at store.elmlakelabs.com, native financing, inventory management</td>
+</tr>
+<tr>
+<td><strong>AI Chatbot</strong></td>
+<td>Intercom Fin (Phase 1) → Custom OpenAI (Phase 2)</td>
+<td>$130/month → $50/month</td>
+<td>Best AI quality to start, migrate to cheaper custom when volume grows</td>
+</tr>
+<tr>
+<td><strong>Email Automation</strong></td>
+<td>Klaviyo</td>
+<td>$20-$60/month</td>
+<td>Best Shopify integration, powerful segmentation, SMS included</td>
+</tr>
+<tr>
+<td><strong>SMS</strong></td>
+<td>Klaviyo (bundled) or Twilio</td>
+<td>$0-$50/month</td>
+<td>Farmers prefer SMS for time-sensitive comms, 90%+ open rate</td>
+</tr>
+<tr>
+<td><strong>CRM</strong></td>
+<td>HubSpot Free → Starter ($20/mo)</td>
+<td>$0-$20/month</td>
+<td>Free tier is sufficient to start, integrates with everything</td>
+</tr>
+<tr>
+<td><strong>Analytics</strong></td>
+<td>PostHog (free tier) + Google Analytics 4</td>
+<td>$0/month</td>
+<td>PostHog for product analytics (funnel tracking), GA4 for traffic</td>
+</tr>
+<tr>
+<td><strong>Video Hosting</strong></td>
+<td>YouTube (free) + Wistia ($24/mo for gated videos)</td>
+<td>$0-$24/month</td>
+<td>YouTube for public content, Wistia for gated install videos with lead capture</td>
+</tr>
+<tr>
+<td><strong>Ad Management</strong></td>
+<td>Google Ads + Meta Ads Manager</td>
+<td>Platform cost only</td>
+<td>Direct management, no agency markup initially</td>
+</tr>
+<tr>
+<td><strong>Compatibility Tool</strong></td>
+<td>Custom-built (Supabase + Next.js)</td>
+<td>$0-$25/month (Supabase)</td>
+<td>Database + API for tractor lookups, free tier handles initial traffic</td>
+</tr>
+<tr>
+<td><strong>Reviews</strong></td>
+<td>Judge.me ($15/mo) or Stamped ($23/mo)</td>
+<td>$15-$23/month</td>
+<td>Shopify-native review collection with photo/video support</td>
+</tr>
+<tr>
+<td><strong>Live Video Support</strong></td>
+<td>Zoom ($13/mo) or FaceTime (free)</td>
+<td>$0-$13/month</td>
+<td>For installation support calls</td>
+</tr>
+<tr>
+<td><strong>Design</strong></td>
+<td>Canva Pro ($13/mo)</td>
+<td>$13/month</td>
+<td>Thumbnails, social graphics, print materials</td>
+</tr>
+<tr>
+<td><strong>Referral Program</strong></td>
+<td>ReferralCandy ($59/mo) or custom</td>
+<td>$0-$59/month</td>
+<td>Automated referral tracking and payouts</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total Monthly Stack Cost:</strong>
+- <strong>Minimum (Phase 1):</strong> ~$400/month
+- <strong>Growth (Phase 2):</strong> ~$700/month
+- <strong>Scale (Phase 3):</strong> ~$1,200/month</p>
+<p><em>Note: This excludes ad spend, which is separate and detailed in the Paid Ads section.</em></p>
+<hr />
+<h2 id="5-content-that-converts-farmers">5. Content That Converts Farmers</h2>
+<h3 id="51-roi-calculator-specification">5.1 ROI Calculator Specification</h3>
+<p><strong>Location:</strong> Standalone page + embedded widget on product pages
+<strong>URL:</strong> elmlakelabs.com/roi-calculator</p>
+<p><strong>Input Fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Options/Range</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total acres farmed</td>
+<td>Number input</td>
+<td>50-50,000</td>
+<td>500</td>
+</tr>
+<tr>
+<td>Primary crop</td>
+<td>Dropdown</td>
+<td>Corn, Soybeans, Wheat, Cotton, Rice, Hay/Forage, Vegetables, Mixed/Other</td>
+<td>Corn</td>
+</tr>
+<tr>
+<td>Current overlap %</td>
+<td>Slider</td>
+<td>3-15%</td>
+<td>8%</td>
+</tr>
+<tr>
+<td>Seed cost per acre</td>
+<td>Currency input</td>
+<td>Auto-filled based on crop</td>
+<td>Corn: $120</td>
+</tr>
+<tr>
+<td>Fertilizer cost per acre</td>
+<td>Currency input</td>
+<td>Auto-filled based on crop</td>
+<td>Corn: $90</td>
+</tr>
+<tr>
+<td>Chemical cost per acre</td>
+<td>Currency input</td>
+<td>Auto-filled based on crop</td>
+<td>Corn: $45</td>
+</tr>
+<tr>
+<td>Fuel cost per gallon</td>
+<td>Currency input</td>
+<td>$2.00-$6.00</td>
+<td>$3.50</td>
+</tr>
+<tr>
+<td>Hours farmed per season</td>
+<td>Number input</td>
+<td>100-5,000</td>
+<td>600</td>
+</tr>
+<tr>
+<td>Current autosteer system</td>
+<td>Dropdown</td>
+<td>None, Lightbar/manual guidance, Deere AutoTrac, Trimble, Raven, Other aftermarket</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Number of tractors</td>
+<td>Number input</td>
+<td>1-20</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Calculations (Backend):</strong></p>
+<pre><code class="language-javascript">// Core savings calculations
+const overlapReduction = currentOverlap - 0.02; // RTK reduces to ~2% overlap
+const acresSaved = totalAcres * (overlapReduction / 100);
+
+const seedSavings = acresSaved * seedCostPerAcre;
+const fertilizerSavings = acresSaved * fertilizerCostPerAcre;
+const chemicalSavings = acresSaved * chemicalCostPerAcre;
+const fuelSavings = acresSaved * (fuelCostPerGallon * 0.8); // ~0.8 gal/acre avg
+
+const totalInputSavings = seedSavings + fertilizerSavings + chemicalSavings + fuelSavings;
+
+// Labor savings (autosteer reduces fatigue, extends daily hours)
+const laborHoursSaved = hoursFarmedPerSeason * 0.15; // 15% efficiency gain
+const laborSavings = laborHoursSaved * 25; // $25/hour imputed labor cost
+
+// Total annual savings
+const totalAnnualSavings = totalInputSavings + laborSavings;
+
+// System cost
+const systemCost = 5495 + 189 + 299; // AT2 + avg bracket + NTRIP year 1
+const paybackSeasons = systemCost / totalAnnualSavings;
+
+// 5-year ROI
+const fiveYearSavings = (totalAnnualSavings * 5) - systemCost - (299 * 4); // subtract NTRIP renewals
+const fiveYearROI = (fiveYearSavings / systemCost) * 100;
+</code></pre>
+<p><strong>Output Display:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Output</th>
+<th>Example Value</th>
+<th>Format</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Annual input savings</td>
+<td>$4,080</td>
+<td>Large, green number</td>
+</tr>
+<tr>
+<td>Annual labor savings</td>
+<td>$2,250</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Total annual savings</strong></td>
+<td><strong>$6,330</strong></td>
+<td>Biggest number on page</td>
+</tr>
+<tr>
+<td>System investment</td>
+<td>$5,983</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Payback period</strong></td>
+<td><strong>0.95 seasons</strong></td>
+<td>Highlighted — &ldquo;Pays for itself in less than 1 season!&rdquo;</td>
+</tr>
+<tr>
+<td>5-year net savings</td>
+<td>$24,454</td>
+<td></td>
+</tr>
+<tr>
+<td>5-year ROI</td>
+<td>409%</td>
+<td></td>
+</tr>
+<tr>
+<td>Savings per acre</td>
+<td>$12.66/acre</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>CTA after results:</strong> &ldquo;See exactly which kit fits your tractor →&rdquo; (links to compatibility tool)
+<strong>Lead capture:</strong> &ldquo;Email me this ROI report&rdquo; (generates PDF with their farm&rsquo;s specific numbers)</p>
+<h3 id="52-comparison-charts">5.2 Comparison Charts</h3>
+<p>Create a comprehensive, honest comparison page. Farmers respect transparency — don&rsquo;t hide weaknesses.</p>
+<p><strong>FJD AT2 vs. John Deere AutoTrac vs. Trimble Autopilot vs. Raven Viper 4+</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>FJD AT2</th>
+<th>Deere AutoTrac</th>
+<th>Trimble Autopilot</th>
+<th>Raven Viper 4+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RTK Accuracy</strong></td>
+<td>2.5cm (1&rdquo;)</td>
+<td>2.5cm (1&rdquo;)</td>
+<td>2.5cm (1&rdquo;)</td>
+<td>2.5cm (1&rdquo;)</td>
+</tr>
+<tr>
+<td><strong>WAAS Accuracy</strong></td>
+<td>15cm (6&rdquo;)</td>
+<td>15cm (6&rdquo;)</td>
+<td>15cm (6&rdquo;)</td>
+<td>15cm (6&rdquo;)</td>
+</tr>
+<tr>
+<td><strong>System Price</strong></td>
+<td>$5,495</td>
+<td>$15,000-$25,000</td>
+<td>$12,000-$20,000</td>
+<td>$8,000-$14,000</td>
+</tr>
+<tr>
+<td><strong>Annual Subscription</strong></td>
+<td>$299 (NTRIP)</td>
+<td>$1,200-$2,400</td>
+<td>$800-$1,500</td>
+<td>$600-$1,200</td>
+</tr>
+<tr>
+<td><strong>5-Year Total Cost</strong></td>
+<td>$6,691</td>
+<td>$21,000-$35,000</td>
+<td>$15,200-$26,000</td>
+<td>$10,400-$18,800</td>
+</tr>
+<tr>
+<td><strong>Tractor Lock-In</strong></td>
+<td>No (move between any tractor)</td>
+<td>Yes (one machine)</td>
+<td>Partial</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td><strong>Brand Compatibility</strong></td>
+<td>Universal (50+ brands)</td>
+<td>Deere only</td>
+<td>Most brands</td>
+<td>Most brands</td>
+</tr>
+<tr>
+<td><strong>ISOBUS Support</strong></td>
+<td>Yes (AT2)</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Install</strong></td>
+<td>DIY (2-4 hours)</td>
+<td>Dealer required</td>
+<td>Dealer recommended</td>
+<td>Dealer recommended</td>
+</tr>
+<tr>
+<td><strong>Display</strong></td>
+<td>10&rdquo; included tablet</td>
+<td>Separate purchase ($3-5K)</td>
+<td>Separate purchase ($2-4K)</td>
+<td>Included 7&rdquo;</td>
+</tr>
+<tr>
+<td><strong>Warranty</strong></td>
+<td>2 years</td>
+<td>2 years</td>
+<td>2 years</td>
+<td>2 years</td>
+</tr>
+<tr>
+<td><strong>Dealer Support</strong></td>
+<td>Growing network + remote</td>
+<td>Extensive</td>
+<td>Extensive</td>
+<td>Moderate</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key takeaway for farmers (displayed prominently):</strong></p>
+<blockquote>
+<p>&ldquo;For the same RTK accuracy, FJD AT2 costs 60-75% less than the OEM alternatives. The trade-off is a smaller dealer network — which Elm Lake Labs bridges with remote support, video install guides, and the Guaranteed to Fit program.&rdquo;</p>
+</blockquote>
+<h3 id="53-video-content-strategy">5.3 Video Content Strategy</h3>
+<p><strong>Content pillars (4 types, rotated weekly):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pillar</th>
+<th>Frequency</th>
+<th>Example</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Install videos</strong></td>
+<td>2/month</td>
+<td>&ldquo;FJD AT2 on JD 7810: Complete Install&rdquo;</td>
+<td>SEO + purchase confidence</td>
+</tr>
+<tr>
+<td><strong>Field demos</strong></td>
+<td>2/month</td>
+<td>&ldquo;Night Planting with FJD: Zero Mistakes&rdquo;</td>
+<td>Trust building</td>
+</tr>
+<tr>
+<td><strong>ROI / education</strong></td>
+<td>2/month</td>
+<td>&ldquo;Is Aftermarket Autosteer Worth It? The Math.&rdquo;</td>
+<td>Awareness</td>
+</tr>
+<tr>
+<td><strong>Customer stories</strong></td>
+<td>2/month</td>
+<td>&ldquo;How Jake Saves $15K/Year on His 2,000 Acres&rdquo;</td>
+<td>Social proof</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Production notes:</strong>
+- Film on real farms with real tractors (not stock footage)
+- Show imperfections — a tractor with mud on it is more trustworthy than a shiny showroom
+- Include GPS accuracy screenshots in every field demo
+- Always show the tractor make/model prominently — it&rsquo;s SEO gold</p>
+<h3 id="54-blogseo-content-calendar-12-months">5.4 Blog/SEO Content Calendar (12 Months)</h3>
+<table>
+<thead>
+<tr>
+<th>Month</th>
+<th>Blog Post 1</th>
+<th>Blog Post 2</th>
+<th>Blog Post 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>&ldquo;The Complete Guide to Aftermarket Autosteer in 2026&rdquo; (pillar page, 3000+ words)</td>
+<td>&ldquo;FJD AT2 Review: 500 Hours Later&rdquo;</td>
+<td>&ldquo;RTK vs WAAS: Which Accuracy Do You Actually Need?&rdquo;</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>&ldquo;Autosteer for John Deere: Every Compatible Model&rdquo; (model-specific pillar)</td>
+<td>&ldquo;How to Set Up NTRIP on Your FJD System&rdquo;</td>
+<td>&ldquo;5 Things I Wish I Knew Before Installing Autosteer&rdquo;</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>&ldquo;Autosteer for Case IH: Complete Compatibility Guide&rdquo;</td>
+<td>&ldquo;Pre-Season Autosteer Checklist&rdquo;</td>
+<td>&ldquo;FJD vs Trimble: Honest Comparison from a Farmer&rsquo;s Perspective&rdquo;</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>&ldquo;Spring Planting with Autosteer: Maximize Every Seed&rdquo;</td>
+<td>&ldquo;Autosteer for New Holland: Compatibility Guide&rdquo;</td>
+<td>&ldquo;Understanding FJD Connect: Cloud Platform Walkthrough&rdquo;</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>&ldquo;Reducing Input Costs with Precision Steering&rdquo;</td>
+<td>&ldquo;Autosteer for Kubota: What You Need to Know&rdquo;</td>
+<td>&ldquo;Base Station vs NTRIP: Which RTK Setup is Right?&rdquo;</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td>&ldquo;Mid-Season Autosteer Maintenance Tips&rdquo;</td>
+<td>&ldquo;How to Move FJD Autosteer Between Tractors&rdquo;</td>
+<td>&ldquo;Customer Spotlight: 3 Farms, 3 Different Setups&rdquo;</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td>&ldquo;Summer Spraying with Autosteer: Zero Overlap Results&rdquo;</td>
+<td>&ldquo;ISOBUS and FJD AT2: Section Control Guide&rdquo;</td>
+<td>&ldquo;The True Cost of Precision Ag: 5-Year Analysis&rdquo;</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td>&ldquo;Autosteer for Vintage Tractors (Pre-2000)&rdquo;</td>
+<td>&ldquo;FJD Firmware Update Guide&rdquo;</td>
+<td>&ldquo;Harvest Prep: Optimizing Autosteer for Combines&rdquo;</td>
+</tr>
+<tr>
+<td><strong>9</strong></td>
+<td>&ldquo;Harvest Season: Using Autosteer for Grain Carts&rdquo;</td>
+<td>&ldquo;State-by-State Precision Ag Grant Programs&rdquo;</td>
+<td>&ldquo;Customer Spotlight: Fleet Installation (5 Tractors)&rdquo;</td>
+</tr>
+<tr>
+<td><strong>10</strong></td>
+<td>&ldquo;Post-Harvest: Off-Season Autosteer Maintenance&rdquo;</td>
+<td>&ldquo;Autosteer for AGCO/Massey Ferguson: Full Guide&rdquo;</td>
+<td>&ldquo;2026 Autosteer Technology Roundup&rdquo;</td>
+</tr>
+<tr>
+<td><strong>11</strong></td>
+<td>&ldquo;Black Friday Precision Ag Deals&rdquo;</td>
+<td>&ldquo;Planning Your 2027 Precision Ag Investment&rdquo;</td>
+<td>&ldquo;FJD AT2 Max Review: Worth the Upgrade?&rdquo;</td>
+</tr>
+<tr>
+<td><strong>12</strong></td>
+<td>&ldquo;Year in Review: Top Autosteer Installs of 2026&rdquo;</td>
+<td>&ldquo;Tax Season: Section 179 and Precision Ag Equipment&rdquo;</td>
+<td>&ldquo;Getting Ready for Spring: Pre-Order Guide&rdquo;</td>
+</tr>
+</tbody>
+</table>
+<p><em>Target: 3 posts/month, 1,000-3,000 words each. Prioritize model-specific compatibility guides (these are the highest-converting SEO pages).</em></p>
+<hr />
+<h2 id="6-budget-timeline">6. Budget &amp; Timeline</h2>
+<h3 id="phase-1-mvp-funnel-months-1-2">Phase 1: MVP Funnel (Months 1-2)</h3>
+<p><strong>Goal:</strong> Launch the core funnel — website, compatibility tool, basic ad spend, initial content.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>One-Time Cost</th>
+<th>Monthly Cost</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Website redesign (Shopify theme + custom pages)</td>
+<td>$2,000-$5,000</td>
+<td>$79/month</td>
+<td>Use a premium Shopify theme, customize for ag</td>
+</tr>
+<tr>
+<td>Compatibility tool development</td>
+<td>$3,000-$8,000</td>
+<td>$25/month (Supabase)</td>
+<td>Custom Next.js widget, initial database of top 200 tractor models</td>
+</tr>
+<tr>
+<td>Initial content creation (10 blog posts + 5 videos)</td>
+<td>$2,000-$4,000</td>
+<td>—</td>
+<td>Mix of written and video, focus on top tractor models</td>
+</tr>
+<tr>
+<td>Shopify apps &amp; integrations</td>
+<td>$500</td>
+<td>$150/month</td>
+<td>Klaviyo, Judge.me, referral plugin</td>
+</tr>
+<tr>
+<td>Google Ads setup + first month</td>
+<td>$500 (setup)</td>
+<td>$2,000/month</td>
+<td>Start conservative, brand defense + high-intent keywords</td>
+</tr>
+<tr>
+<td>Facebook Ads setup + first month</td>
+<td>$300 (setup)</td>
+<td>$1,000/month</td>
+<td>Awareness campaigns, retargeting pixel installed</td>
+</tr>
+<tr>
+<td>Analytics &amp; tracking setup</td>
+<td>$500</td>
+<td>—</td>
+<td>PostHog, GA4, conversion tracking, UTM framework</td>
+</tr>
+<tr>
+<td>Legal (terms, guarantee policy, privacy)</td>
+<td>$500-$1,000</td>
+<td>—</td>
+<td>Attorney review of Guaranteed to Fit terms</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Phase 1 Total:</strong>
+- One-time: $9,300-$19,300
+- Monthly recurring: $3,254/month
+- <strong>Budget: ~$15,000 launch + $3,300/month</strong></p>
+<h3 id="phase-2-ai-chatbot-scale-months-3-4">Phase 2: AI Chatbot &amp; Scale (Months 3-4)</h3>
+<p><strong>Goal:</strong> Add AI chatbot, ramp up content and ads, optimize based on Phase 1 data.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>One-Time Cost</th>
+<th>Monthly Cost</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intercom Fin setup + training</td>
+<td>$500-$1,000</td>
+<td>$130/month</td>
+<td>Ingest all manuals, configure handoff rules</td>
+</tr>
+<tr>
+<td>Knowledge base creation</td>
+<td>$1,000-$2,000</td>
+<td>—</td>
+<td>Organize all PDFs, create FAQ database</td>
+</tr>
+<tr>
+<td>White Glove service setup</td>
+<td>$500</td>
+<td>—</td>
+<td>Process documentation, fulfillment workflow</td>
+</tr>
+<tr>
+<td>Content creation (ongoing)</td>
+<td>—</td>
+<td>$1,500/month</td>
+<td>3 blog posts + 2 videos/month, freelancer or in-house</td>
+</tr>
+<tr>
+<td>Increased ad spend</td>
+<td>—</td>
+<td>$5,000/month</td>
+<td>Scale winning campaigns from Phase 1</td>
+</tr>
+<tr>
+<td>YouTube channel optimization</td>
+<td>$500</td>
+<td>—</td>
+<td>Thumbnails, descriptions, playlists, end screens</td>
+</tr>
+<tr>
+<td>Referral program launch</td>
+<td>$300</td>
+<td>$59/month</td>
+<td>ReferralCandy or custom, print referral cards</td>
+</tr>
+<tr>
+<td>Compatibility database expansion</td>
+<td>$1,000</td>
+<td>—</td>
+<td>Add 200 more tractor models (total: 400)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Phase 2 Total:</strong>
+- One-time: $3,800-$5,300
+- Monthly recurring: $6,689/month (includes Phase 1 recurring)
+- <strong>Budget: ~$5,000 launch + $6,700/month</strong></p>
+<h3 id="phase-3-optimization-scale-months-5-6">Phase 3: Optimization &amp; Scale (Months 5-6)</h3>
+<p><strong>Goal:</strong> Optimize conversion rates, expand content, consider custom chatbot migration.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>One-Time Cost</th>
+<th>Monthly Cost</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A/B testing program</td>
+<td>$500</td>
+<td>$50/month</td>
+<td>Test compatibility tool flow, CTAs, pricing display</td>
+</tr>
+<tr>
+<td>Custom chatbot development (if needed)</td>
+<td>$5,000-$10,000</td>
+<td>$50/month</td>
+<td>OpenAI Assistant API + custom widget</td>
+</tr>
+<tr>
+<td>Video content scaling</td>
+<td>—</td>
+<td>$2,000/month</td>
+<td>4+ videos/month, customer testimonials</td>
+</tr>
+<tr>
+<td>Increased ad spend</td>
+<td>—</td>
+<td>$8,500/month</td>
+<td>Scale to profitable campaigns, kill underperformers</td>
+</tr>
+<tr>
+<td>Compatibility database — full</td>
+<td>$1,500</td>
+<td>—</td>
+<td>Expand to 800+ models, add photo verification</td>
+</tr>
+<tr>
+<td>Partnerships (NTRIP providers, financing)</td>
+<td>$500</td>
+<td>—</td>
+<td>Negotiate better NTRIP rates, set up AgDirect</td>
+</tr>
+<tr>
+<td>Trade show presence</td>
+<td>$2,000-$5,000</td>
+<td>—</td>
+<td>1-2 regional farm shows with demo unit</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Phase 3 Total:</strong>
+- One-time: $9,500-$17,500
+- Monthly recurring: $10,600/month+ (includes all phases)
+- <strong>Budget: ~$12,000 launch + $10,600/month</strong></p>
+<h3 id="6-month-budget-summary">6-Month Budget Summary</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>One-Time</th>
+<th>Monthly</th>
+<th>6-Month Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase 1 (Mo 1-2)</td>
+<td>$15,000</td>
+<td>$3,300 × 2</td>
+<td>$21,600</td>
+</tr>
+<tr>
+<td>Phase 2 (Mo 3-4)</td>
+<td>$5,000</td>
+<td>$6,700 × 2</td>
+<td>$18,400</td>
+</tr>
+<tr>
+<td>Phase 3 (Mo 5-6)</td>
+<td>$12,000</td>
+<td>$10,600 × 2</td>
+<td>$33,200</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>$32,000</strong></td>
+<td>—</td>
+<td><strong>$73,200</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Break-even analysis:</strong> At an average order value of $6,000 and 25% gross margin ($1,500 GP per sale), ELL needs to sell <strong>49 units</strong> in 6 months (or ~8/month) to break even on the $73,200 investment. At the conservative estimate of 15 units/month by month 6, this investment pays back within the first 6 months.</p>
+<hr />
+<h2 id="7-kpis-metrics">7. KPIs &amp; Metrics</h2>
+<h3 id="funnel-metrics-by-stage">Funnel Metrics by Stage</h3>
+<p><strong>Stage 1 — Awareness</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target (Month 3)</th>
+<th>Target (Month 6)</th>
+<th>How to Track</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Monthly website visitors</td>
+<td>3,000</td>
+<td>8,000</td>
+<td>GA4</td>
+</tr>
+<tr>
+<td>YouTube channel subscribers</td>
+<td>500</td>
+<td>2,000</td>
+<td>YouTube Analytics</td>
+</tr>
+<tr>
+<td>YouTube monthly views</td>
+<td>10,000</td>
+<td>40,000</td>
+<td>YouTube Analytics</td>
+</tr>
+<tr>
+<td>Social media followers (all platforms)</td>
+<td>1,000</td>
+<td>3,000</td>
+<td>Native analytics</td>
+</tr>
+<tr>
+<td>Organic search impressions</td>
+<td>50,000</td>
+<td>200,000</td>
+<td>Google Search Console</td>
+</tr>
+<tr>
+<td>Cost per click (blended ads)</td>
+<td>$2.50</td>
+<td>$1.80</td>
+<td>Google/Meta Ads</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Stage 2 — Engagement</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target (Month 3)</th>
+<th>Target (Month 6)</th>
+<th>How to Track</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compatibility tool starts</td>
+<td>300/month</td>
+<td>1,000/month</td>
+<td>PostHog</td>
+</tr>
+<tr>
+<td>Compatibility tool completions</td>
+<td>200/month</td>
+<td>700/month</td>
+<td>PostHog</td>
+</tr>
+<tr>
+<td>Tool completion rate</td>
+<td>65%</td>
+<td>70%</td>
+<td>PostHog</td>
+</tr>
+<tr>
+<td>Email captures from tool</td>
+<td>80/month</td>
+<td>350/month</td>
+<td>Klaviyo</td>
+</tr>
+<tr>
+<td>Tool → product page rate</td>
+<td>40%</td>
+<td>50%</td>
+<td>PostHog</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Stage 3 — Qualification</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target (Month 3)</th>
+<th>Target (Month 6)</th>
+<th>How to Track</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI chatbot conversations</td>
+<td>100/month</td>
+<td>500/month</td>
+<td>Intercom</td>
+</tr>
+<tr>
+<td>AI resolution rate (no human needed)</td>
+<td>75%</td>
+<td>85%</td>
+<td>Intercom</td>
+</tr>
+<tr>
+<td>Chatbot → product page rate</td>
+<td>30%</td>
+<td>40%</td>
+<td>Intercom + PostHog</td>
+</tr>
+<tr>
+<td>Human handoff rate</td>
+<td>25%</td>
+<td>15%</td>
+<td>Intercom</td>
+</tr>
+<tr>
+<td>Average chat-to-purchase time</td>
+<td>7 days</td>
+<td>4 days</td>
+<td>CRM</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Stage 4 — Conversion</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target (Month 3)</th>
+<th>Target (Month 6)</th>
+<th>How to Track</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Monthly orders</td>
+<td>8</td>
+<td>25</td>
+<td>Shopify</td>
+</tr>
+<tr>
+<td>Conversion rate (visitor → purchase)</td>
+<td>0.3%</td>
+<td>0.4%</td>
+<td>Shopify + GA4</td>
+</tr>
+<tr>
+<td>Average order value</td>
+<td>$5,800</td>
+<td>$6,200</td>
+<td>Shopify</td>
+</tr>
+<tr>
+<td>Bundle attach rate</td>
+<td>40%</td>
+<td>55%</td>
+<td>Shopify</td>
+</tr>
+<tr>
+<td>White Glove attach rate</td>
+<td>20%</td>
+<td>35%</td>
+<td>Shopify</td>
+</tr>
+<tr>
+<td>Cart abandonment rate</td>
+<td>75%</td>
+<td>65%</td>
+<td>Shopify</td>
+</tr>
+<tr>
+<td>Financing utilization</td>
+<td>15%</td>
+<td>25%</td>
+<td>Affirm/Shop Pay</td>
+</tr>
+<tr>
+<td>Customer acquisition cost (blended)</td>
+<td>$250</td>
+<td>$175</td>
+<td>Ad spend ÷ new customers</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Stage 5 — Retention &amp; Referral</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target (Month 3)</th>
+<th>Target (Month 6)</th>
+<th>How to Track</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NPS score</td>
+<td>50</td>
+<td>65</td>
+<td>Post-purchase survey</td>
+</tr>
+<tr>
+<td>Google review rating</td>
+<td>4.5+ stars</td>
+<td>4.7+ stars</td>
+<td>Google Business</td>
+</tr>
+<tr>
+<td>Review collection rate</td>
+<td>20%</td>
+<td>35%</td>
+<td>Judge.me</td>
+</tr>
+<tr>
+<td>Referral program participation</td>
+<td>10% of customers</td>
+<td>20% of customers</td>
+<td>ReferralCandy</td>
+</tr>
+<tr>
+<td>Referral conversion rate</td>
+<td>15%</td>
+<td>25%</td>
+<td>ReferralCandy</td>
+</tr>
+<tr>
+<td>NTRIP renewal rate</td>
+<td>—</td>
+<td>80%</td>
+<td>Shopify subscriptions</td>
+</tr>
+<tr>
+<td>Repeat purchase rate (accessories, second unit)</td>
+<td>5%</td>
+<td>10%</td>
+<td>Shopify</td>
+</tr>
+<tr>
+<td>Guarantee claims</td>
+<td>&lt;5%</td>
+<td>&lt;3%</td>
+<td>CRM</td>
+</tr>
+<tr>
+<td>Return rate</td>
+<td>&lt;5%</td>
+<td>&lt;3%</td>
+<td>Shopify</td>
+</tr>
+</tbody>
+</table>
+<h3 id="benchmarks-for-ag-e-commerce">Benchmarks for Ag E-Commerce</h3>
+<p>Industry context for these targets:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Ag E-Commerce Average</th>
+<th>ELL Target</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Website conversion rate</td>
+<td>0.5-1.5%</td>
+<td>0.3-0.5%</td>
+<td>Lower for high-ticket; compensated by higher AOV</td>
+</tr>
+<tr>
+<td>Cart abandonment rate</td>
+<td>70-80%</td>
+<td>65-75%</td>
+<td>Normal for $5K+ purchases; retargeting critical</td>
+</tr>
+<tr>
+<td>Email open rate</td>
+<td>25-35%</td>
+<td>30-40%</td>
+<td>Farmers are responsive to relevant email</td>
+</tr>
+<tr>
+<td>SMS open rate</td>
+<td>90%+</td>
+<td>90%+</td>
+<td>Highest-performing channel for ag</td>
+</tr>
+<tr>
+<td>Customer acquisition cost</td>
+<td>$100-$500</td>
+<td>$150-$250</td>
+<td>Varies by product price point</td>
+</tr>
+<tr>
+<td>Repeat purchase rate</td>
+<td>5-15%</td>
+<td>10-15%</td>
+<td>Fleet opportunities drive this higher</td>
+</tr>
+<tr>
+<td>Referral rate</td>
+<td>5-10%</td>
+<td>15-20%</td>
+<td>Agriculture has highest referral potential of any industry</td>
+</tr>
+<tr>
+<td>NPS</td>
+<td>30-50</td>
+<td>50-65</td>
+<td>Autosteer has high satisfaction when it works as promised</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reporting-cadence">Reporting Cadence</h3>
+<table>
+<thead>
+<tr>
+<th>Report</th>
+<th>Frequency</th>
+<th>Audience</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Daily dashboard</td>
+<td>Daily</td>
+<td>John</td>
+<td>Orders, revenue, ad spend, tool completions</td>
+</tr>
+<tr>
+<td>Weekly funnel review</td>
+<td>Weekly</td>
+<td>Team</td>
+<td>Full funnel metrics, week-over-week trends, top-performing content</td>
+</tr>
+<tr>
+<td>Monthly deep dive</td>
+<td>Monthly</td>
+<td>John + advisors</td>
+<td>CAC analysis, channel ROI, content performance, competitive landscape updates</td>
+</tr>
+<tr>
+<td>Quarterly strategy</td>
+<td>Quarterly</td>
+<td>Leadership</td>
+<td>Goal progress, budget adjustments, roadmap updates, new opportunities</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="appendix-a-quick-start-checklist">Appendix A: Quick-Start Checklist</h2>
+<h3 id="week-1">Week 1</h3>
+<ul>
+<li>[ ] Audit and update existing Shopify store (store.elmlakelabs.com)</li>
+<li>[ ] Install analytics (PostHog, GA4, conversion pixels)</li>
+<li>[ ] Set up Klaviyo account and import existing customer list</li>
+<li>[ ] Begin compatibility database — enter top 50 tractor models</li>
+<li>[ ] Create Google Ads account and install tracking</li>
+<li>[ ] Create Meta Ads account and install pixel</li>
+</ul>
+<h3 id="week-2">Week 2</h3>
+<ul>
+<li>[ ] Design and build compatibility tool prototype</li>
+<li>[ ] Write first 3 blog posts (pillar page + 2 model-specific)</li>
+<li>[ ] Film first 2 YouTube videos (install + cab cam demo)</li>
+<li>[ ] Set up Intercom account and begin knowledge base import</li>
+<li>[ ] Design &ldquo;Guaranteed to Fit&rdquo; program terms and landing page</li>
+</ul>
+<h3 id="week-3">Week 3</h3>
+<ul>
+<li>[ ] Launch compatibility tool (beta — top 50 models)</li>
+<li>[ ] Publish first blog posts and YouTube videos</li>
+<li>[ ] Launch Google Ads Campaign 1 (brand defense) and Campaign 3 (model-specific)</li>
+<li>[ ] Set up automated email flows in Klaviyo (post-purchase sequence)</li>
+<li>[ ] Begin Facebook organic posting cadence</li>
+</ul>
+<h3 id="week-4">Week 4</h3>
+<ul>
+<li>[ ] Launch AI chatbot (Intercom Fin) with initial knowledge base</li>
+<li>[ ] Launch Facebook/Instagram awareness ads</li>
+<li>[ ] Expand compatibility database to 100 models</li>
+<li>[ ] Publish 2 more blog posts</li>
+<li>[ ] Set up referral program infrastructure</li>
+</ul>
+<h3 id="month-2">Month 2</h3>
+<ul>
+<li>[ ] Launch Google Ads Campaign 2 (high intent)</li>
+<li>[ ] Launch YouTube ads (pre-roll on competitor content)</li>
+<li>[ ] Expand compatibility database to 200 models</li>
+<li>[ ] Publish 6 blog posts + 4 YouTube videos</li>
+<li>[ ] Launch White Glove pre-configuration service</li>
+<li>[ ] First review collection campaign</li>
+</ul>
+<hr />
+<h2 id="appendix-b-competitive-intelligence-ongoing-monitoring">Appendix B: Competitive Intelligence — Ongoing Monitoring</h2>
+<p>Track these competitors monthly:</p>
+<table>
+<thead>
+<tr>
+<th>Competitor</th>
+<th>What to Monitor</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FJD Dynamics (direct)</td>
+<td>Pricing changes, new products, firmware updates</td>
+<td>Must stay aligned with manufacturer</td>
+</tr>
+<tr>
+<td>Emerald Bay Ag Dynamics</td>
+<td>Pricing, promotions, new services</td>
+<td>Largest FJD dealer competitor in North America</td>
+</tr>
+<tr>
+<td>Global GPS Systems</td>
+<td>Pricing strategy, new products added</td>
+<td>Wholesale competitor</td>
+</tr>
+<tr>
+<td>AgriSpray Drones</td>
+<td>HD408 pricing, market positioning</td>
+<td>Budget segment competitor</td>
+</tr>
+<tr>
+<td>John Deere (StarFire)</td>
+<td>Pricing changes, subscription model updates</td>
+<td>The &ldquo;default&rdquo; that farmers compare against</td>
+</tr>
+<tr>
+<td>Trimble Agriculture</td>
+<td>New products, dealer network expansion</td>
+<td>Second-largest OEM competitor</td>
+</tr>
+<tr>
+<td>AgOpenGPS (open source)</td>
+<td>Community growth, new features</td>
+<td>Free alternative that tech-savvy farmers consider</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>This document is a living playbook. Update it monthly as market conditions, product availability, and funnel performance data evolve.</em></p>
+<p><em>Last updated: February 2026</em></p>
+</div>
+
+</body>
+</html>
